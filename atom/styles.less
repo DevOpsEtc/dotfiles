@@ -1,0 +1,65 @@
+////////////////////////////////////////////////////////
+//  filename: styles.less                             //
+//  path:     ~/src/config/dotfiles/atom/             //
+//  symlink:  ~/.atom/                                //
+//  purpose:  atom editor styling                     //
+//  date:     04/19/2016                              //
+//  repo:     https://github.com/WebAppNut/dotfiles   //
+////////////////////////////////////////////////////////
+
+// resize atom ui
+.theme-one-dark-ui {
+  .tab-bar { font-size: 12px; }
+  .tree-view { font-size: 14px; }
+  .status-bar { font-size: 12px; }
+}
+
+// style the background color of the tree view
+.tree-view {
+  // background-color: whitesmoke;
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  // color: white;
+  // background-color: hsl(180, 24%, 12%);
+}
+
+// To style other content in the text editor's shadow DOM, use the ::shadow expression
+atom-text-editor::shadow .cursor {
+  // border-color: red;
+}
+
+// style the line wrap guide
+atom-text-editor::shadow .wrap-guide {
+  opacity: .40; // reduced visibility
+}
+
+// style the inactive pane
+atom-pane:not(.active) {
+  opacity: 0.75;
+}
+
+// style terminal-plus fork
+.platformio-ide-terminal .xterm {
+  background-color: rgb(26, 28, 32);
+  color: rgb(129, 129, 129);
+
+  ::selection {
+    background-color: rgba(92, 99, 112, .39);
+  }
+
+  .terminal-cursor {
+    background-color: rgb(187, 187, 187);
+  }
+}
+
+// style terminal-plus fork close all icon
+.platformio-ide-terminal.status-bar .icon-x {
+  color: #8b93a6;
+}
+
+// style terminal-plus fork terminal icon
+.platformio-ide-terminal.status-bar .icon-terminal {
+  // color: #8b93a6;
+}

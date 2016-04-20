@@ -1,0 +1,51 @@
+
+  #######################################################
+  ##  filename: .gitignore                             ##
+  ##  path:     ~/src/config/dotfiles/git/             ##
+  ##  purpose:  git configuration                      ##
+  ##  date:     04/19/2016                             ##
+  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  #######################################################
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Temporary files #
+###################
+*.swp
+*.swo
+*~
+
+# Packages #
+############
+*.7z
+*.dmg
+#*.gz
+*.iso
+*.jar
+*.rar
+#*.tar
+*.zip
+
+# Logs and databases #
+######################
+#*.log
+#*.sql
+#*.sqlite
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Misc #
+######################
+.tags

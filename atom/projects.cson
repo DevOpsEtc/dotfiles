@@ -1,0 +1,39 @@
+  #######################################################
+  ##  filename: projects.cson                          ##
+  ##  path:     ~/src/config/dotfiles/atom/            ##
+  ##  symlink:  ~/.atom/                               ##
+  ##  purpose:  project-manager project config         ##
+  ##  date:     04/19/2016                             ##
+  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  #######################################################
+
+
+codeschool:
+  title: "Codeschool"
+  paths: [
+    "/Users/gp/src"
+    "/Users/gp/src/training/codeschool"
+  ]
+cheats:
+  title: "Cheats"
+  paths: [
+    "/Users/gp/src/cheats"
+  ]
+dotfiles:
+  title: "dotfiles"
+  paths: [
+    "/Users/gp/src"
+    "/Users/gp/src/config/dotfiles"
+  ]
+provision:
+  title: "Provision"
+  paths: [
+    "/Users/gp/src"
+    "/Users/gp/src/config/provision"
+  ]
+training:
+  title: "Training"
+  paths: [
+    "/Users/gp/src/"
+    "/Users/gp/src/training"
+  ]

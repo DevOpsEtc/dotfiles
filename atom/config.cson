@@ -1,0 +1,165 @@
+  #######################################################
+  ##  filename: config.cson                            ##
+  ##  path:     ~/src/config/dotfiles/atom/            ##
+  ##  symlink:  ~/.atom/                               ##
+  ##  purpose:  atom editor startup                    ##
+  ##  date:     04/19/2016                             ##
+  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  #######################################################
+
+"*":
+  "atom-beautify":
+    apex: {}
+    arduino: {}
+    c: {}
+    cfml: {}
+    coffeescript: {}
+    cpp: {}
+    cs: {}
+    css:
+      indent_size: 2
+    d: {}
+    ejs: {}
+    erb: {}
+    fortran: {}
+    general:
+      _analyticsUserId: ""
+      analytics: false
+    gherkin: {}
+    handlebars: {}
+    html:
+      indent_size: 2
+    jade: {}
+    java: {}
+    js:
+      indent_size: 2
+    json:
+      indent_size: 2
+    jsx: {}
+    latex: {}
+    less: {}
+    marko: {}
+    mustache: {}
+    objectivec: {}
+    pawn: {}
+    perl: {}
+    php: {}
+    python: {}
+    riot: {}
+    ruby: {}
+    rust: {}
+    sass: {}
+    scss: {}
+    spacebars: {}
+    sql: {}
+    svg: {}
+    swig: {}
+    tss: {}
+    twig: {}
+    typescript: {}
+    vala: {}
+    visualforce: {}
+    xml: {}
+    xtemplate: {}
+  "atom-pair":
+    pusher_app_key: ""
+    pusher_app_secret: ""
+  "atom-runner":
+    paneSplitDirection: "Down"
+  autosave:
+    enabled: true
+  core:
+    disabledPackages: [
+      "vim-mode-plus"
+      "pigments"
+      "symbols-tree-view"
+      "atom-ctags"
+      "metrics"
+      "exception-reporting"
+    ]
+    ignoredNames: [
+      "._*"
+      ".DS_Store"
+      ".Trash"
+      ".git"
+      ".svn"
+      "*.photoslibrary"
+      "*.backup"
+      "*.bak"
+      "*.bck"
+      "*.bz2"
+      "*.doc"
+      "*.docx"
+      "*.gz"
+      "*.gzip"
+      "*.idraw"
+      "*.key"
+      "*.mindnode"
+      "*.mm"
+      "*.numbers"
+      "*.odt"
+      "*.ots"
+      "*.pages"
+      "*.pdf"
+      "*.ppt"
+      "*.pptx"
+      "*.psd"
+      "*.swo"
+      "*.swp"
+      "*.tar"
+      "*.webloc"
+      "*.url"
+      "*.xls"
+      "*.xlsx"
+      "*.zip"
+    ]
+    packagesWithKeymapsDisabled: [
+      "platformio-ide-terminal"
+    ]
+    projectHome: "/Users/gp/src"
+  editor:
+    fontFamily: "Roboto Mono"
+    fontSize: 16
+    invisibles: {}
+    scrollPastEnd: true
+  "export-html":
+    lineNumber:
+      use: false
+    openIn: "browser"
+    style: "grayscale.css"
+  "find-and-replace": {}
+  "fuzzy-finder": {}
+  "git-plus": {}
+  minimap:
+    plugins:
+      codeglance: true
+      codeglanceDecorationsZIndex: 0
+      "minimap-autohide": true
+      "minimap-autohideDecorationsZIndex": 0
+  "one-dark-ui": {}
+  "open-recent": {}
+  pigments: {}
+  "platformio-ide-terminal":
+    core:
+      mapTerminalsTo: "Folder"
+      workingDirectory: "Active File"
+    style:
+      animationSpeed: 100
+      defaultPanelHeight: "250"
+      fontFamily: "Roboto Mono for Powerline"
+      fontSize: "16"
+  "spell-check": {}
+  "status-bar": {}
+  tabs: {}
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+    squashDirectoryNames: true
+  welcome:
+    showOnStartup: false
+".js.source":
+  editor:
+    showIndentGuide: true
+".plain.text":
+  editor:
+    softWrap: true
