@@ -68,6 +68,7 @@
       "metrics"
       "exception-reporting"
       "atom-beautify"
+      "minimap-codeglance"
     ]
     ignoredNames: [
       "._*"

@@ -4,7 +4,7 @@
   ##  path:     ~/src/config/dotfiles/git/             ##
   ##  symlink:  ~/                                     ##
   ##  purpose:  git configuration                      ##
-  ##  date:     04/19/2016                             ##
+  ##  date:     04/23/2016                             ##
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
@@ -114,7 +114,7 @@
 	mc = merge --continue                     #
 	ms = merge --skip                         #
 	o = checkout                              # switch branches or restore tree
-	ob = checkout -b                          # create branch & switch to it 
+	ob = checkout -b                          # create branch & switch to it
 	pr = prune -v                             #
 	ps = push                                 # update remote refs & objects
 	psf = push -f                             #
@@ -155,7 +155,11 @@
 	ra = remote add                           #
 	rr = remote rm                            #
 	rv = remote -v                            #
+																						# ↓ display remote repo link
+	rl = "!git remote get-url origin | awk \
+	'{sub(/:/,\"/\");sub(/git\\@/,\"https://\");sub(/\\.git/,\"\")};{print}'"
 	rm = remote rename                        #
+	ro = !open $(git rl)											# open remote repo link in browser
 	rp = remote prune                         #
 	rs = remote show                          #
 	rao = remote add origin                   #

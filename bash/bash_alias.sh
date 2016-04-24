@@ -3,7 +3,7 @@
   ##  path:     ~/src/config/dotfiles/bash/            ##
   ##  symlink:  ~/.bash_aliases                        ##
   ##  purpose:  bash command aliases                   ##
-  ##  date:     11/13/2015                             ##
+  ##  date:     04/23/2016                             ##
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
@@ -19,6 +19,7 @@ alias fpax='chmod a+x'                      # make executable
 alias bk='backup.sh'                        # invoke backup script
 alias bak='backup'                          # backup(); [dir/file]
 alias c='clear'                             # clear screen
+alias ch='cheat'                            # search for term in note file
 alias cp='cp -iv'                           # copy; confirm; verbose
 alias cpwd="pwd | tr -d '\n' |pbcopy"       # copy working directory path
 alias ci="fc -ln -1 | tr -d '\n' |pbcopy"   # copy last command
@@ -47,8 +48,6 @@ alias lz='ls -AlShr'                        # sort by size (largest @bottom)
 alias ln='ln -v'                            # link creation with verbose switch
 alias m0='make_empty_file'                  # mkfile [number] [size]
 alias mv='mv -iv'                           # move; confirm; verbose
-alias ns='notes_search'                     # search for term in note file
-alias np='notes_print'                      # copy [note].txt content to pages
 alias path='echo -e ${PATH//:/\\n}'         # list all executable paths
 alias ping='ping -c3'                       # limit ping to 3 attempts
 alias R='. $HOME/.bashrc'                   # source .bashrc to grab changes
