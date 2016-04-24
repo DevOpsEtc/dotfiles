@@ -1,24 +1,24 @@
 cheats:
   title: "Cheats"
   paths: [
-    "/Users/gp/src"
     "/Users/gp/src/cheats"
+    "/Users/gp/src"
   ]
 dotfile:
   title: "Dotfiles"
   paths: [
-    "/Users/gp/src"
     "/Users/gp/src/config/dotfiles"
+    "/Users/gp/src"
   ]
 provision:
   title: "Provision"
   paths: [
-    "/Users/gp/src"
     "/Users/gp/src/config/provision"
+    "/Users/gp/src"
   ]
 training:
   title: "Training"
   paths: [
-    "/Users/gp/src"
     "/Users/gp/src/training"
+    "/Users/gp/src"
   ]
