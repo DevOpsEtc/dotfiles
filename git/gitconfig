@@ -143,6 +143,7 @@
 	rbi = rebase --interactive                # choose commits to rebase
 	rbs = rebase --skip                       #
 	re = reset                                # reset current HEAD to new state
+                                            # $ g re [filename] for individual
 	rh = reset HEAD                           #
 	reh = reset --hard                        #
 	rem = reset --mixed                       #
