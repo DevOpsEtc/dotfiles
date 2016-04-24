@@ -114,7 +114,7 @@
 	mc = merge --continue                     #
 	ms = merge --skip                         #
 	o = checkout                              # switch branches or restore tree
-	ob = checkout -b                          #
+	ob = checkout -b                          # create branch & switch to it 
 	pr = prune -v                             #
 	ps = push                                 # update remote refs & objects
 	psf = push -f                             #

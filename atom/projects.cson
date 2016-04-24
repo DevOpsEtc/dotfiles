@@ -1,40 +1,24 @@
-codeschool:
-  title: "Codeschool"
-  paths: [
-    "/Users/gp/src"
-    "/Users/gp/src/config/dotfiles"
-    "/Users/gp/src/config/provision"
-    "/Users/gp/src/training"
-  ]
 cheats:
   title: "Cheats"
   paths: [
     "/Users/gp/src"
-    "/Users/gp/src/config/dotfiles"
-    "/Users/gp/src/config/provision"
-    "/Users/gp/src/training"
+    "/Users/gp/src/cheats"
   ]
 dotfile:
   title: "Dotfiles"
   paths: [
     "/Users/gp/src"
     "/Users/gp/src/config/dotfiles"
-    "/Users/gp/src/config/provision"
-    "/Users/gp/src/training"
   ]
 provision:
   title: "Provision"
   paths: [
     "/Users/gp/src"
-    "/Users/gp/src/config/dotfiles"
     "/Users/gp/src/config/provision"
-    "/Users/gp/src/training"
   ]
 training:
   title: "Training"
   paths: [
     "/Users/gp/src"
-    "/Users/gp/src/config/dotfiles"
-    "/Users/gp/src/config/provision"
     "/Users/gp/src/training"
   ]
