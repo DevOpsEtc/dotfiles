@@ -1,39 +1,40 @@
-  #######################################################
-  ##  filename: projects.cson                          ##
-  ##  path:     ~/src/config/dotfiles/atom/            ##
-  ##  symlink:  ~/.atom/                               ##
-  ##  purpose:  project-manager project config         ##
-  ##  date:     04/19/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
-  #######################################################
-
-
 codeschool:
   title: "Codeschool"
   paths: [
     "/Users/gp/src"
-    "/Users/gp/src/training/codeschool"
+    "/Users/gp/src/config/dotfiles"
+    "/Users/gp/src/config/provision"
+    "/Users/gp/src/training"
   ]
 cheats:
   title: "Cheats"
   paths: [
-    "/Users/gp/src/cheats"
+    "/Users/gp/src"
+    "/Users/gp/src/config/dotfiles"
+    "/Users/gp/src/config/provision"
+    "/Users/gp/src/training"
   ]
-dotfiles:
-  title: "dotfiles"
+dotfile:
+  title: "Dotfiles"
   paths: [
     "/Users/gp/src"
     "/Users/gp/src/config/dotfiles"
+    "/Users/gp/src/config/provision"
+    "/Users/gp/src/training"
   ]
 provision:
   title: "Provision"
   paths: [
     "/Users/gp/src"
+    "/Users/gp/src/config/dotfiles"
     "/Users/gp/src/config/provision"
+    "/Users/gp/src/training"
   ]
 training:
   title: "Training"
   paths: [
-    "/Users/gp/src/"
+    "/Users/gp/src"
+    "/Users/gp/src/config/dotfiles"
+    "/Users/gp/src/config/provision"
     "/Users/gp/src/training"
   ]

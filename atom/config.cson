@@ -1,12 +1,3 @@
-  #######################################################
-  ##  filename: config.cson                            ##
-  ##  path:     ~/src/config/dotfiles/atom/            ##
-  ##  symlink:  ~/.atom/                               ##
-  ##  purpose:  atom editor startup                    ##
-  ##  date:     04/19/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
-  #######################################################
-
 "*":
   "atom-beautify":
     apex: {}
@@ -76,6 +67,7 @@
       "atom-ctags"
       "metrics"
       "exception-reporting"
+      "atom-beautify"
     ]
     ignoredNames: [
       "._*"
@@ -129,6 +121,9 @@
     style: "grayscale.css"
   "find-and-replace": {}
   "fuzzy-finder": {}
+  "gist-it":
+    newGistsDefaultToPrivate: true
+    openAfterCreate: true
   "git-plus": {}
   minimap:
     plugins:
