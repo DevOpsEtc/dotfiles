@@ -106,6 +106,7 @@
       "*.xlsx"
       "*.zip"
     ]
+    openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: [
       "platformio-ide-terminal"
     ]

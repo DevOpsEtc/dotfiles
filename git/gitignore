@@ -3,9 +3,13 @@
 ##  filename: .gitignore                             ##
 ##  path:     ~/src/config/dotfiles/git/             ##
 ##  purpose:  git ignore (global)                    ##
-##  date:     04/27/2016                             ##
+##  date:     05/03/2016                             ##
 ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+##  note:     called from gitconfig:excludesfile     ##
 #######################################################
+
+## Custom #############################################
+_private/
 
 ## Node ###############################################
 ## Logs
@@ -50,5 +54,4 @@ bower_components/
 .Spotlight-V100
 
 ## Ctags ##############################################
-######################
 .tags

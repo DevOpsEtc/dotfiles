@@ -16,7 +16,6 @@ alias fp000='chmod a-rwx'                   # strip all file perms
 alias fp644='chmod go+r,u+rw'               # set file perms to 644
 alias fp755='chmod go+rx,u+rwx'             # set file perms to 755
 alias fpax='chmod a+x'                      # make executable
-alias bk='backup.sh'                        # invoke backup script
 alias bak='backup'                          # backup(); [dir/file]
 alias c='clear'                             # clear screen
 alias ch='cheat'                            # search for term in note file
@@ -38,6 +37,7 @@ alias h='history'                           # list command history
 alias hr='history_remove'                   # remove line(s) from command history
 alias hs='history_search'                   # search command history [term]
 alias ip='curl ip.appspot.com'              # list public facing ip address
+alias kb='key_backup.sh'                    # invoke backup script
 alias l.='ls -dAF .[^.]*'                   # ls only dotfiles
 alias l='ls -fF'                            # list all; no sort; link=/, dir=@
 alias ld='ls -dA */'                        # ls only dirs
@@ -61,32 +61,46 @@ alias w1d='tmux detach'                     # detach tmux session
 alias w1k='killall tmux'                    # kill tmux session
 alias which='which -a'                      # find instances of executable [app]
 alias wk='work.sh'                          # invoke bettersnaptool snap script
-alias avl='ansible-vault edit $p_vl'        # decrypt & edit vault_local.yml
-alias avs='ansible-vault edit $p_vs'        # decrypt & edit vault_server.yml
-alias ave='ansible-vault encrypt'           # add file encryption [path/file]
-alias avd='ansible-vault decrypt'           # remove file encryption [path/file]
-alias apl='$c_ap -l local -K $c_ap2 -vvv'   # run playbook host-limited: local
-alias apd='$c_ap -l dev $c_ap2 -vvv'        # run playbook host-limited: dev
-alias aps='$c_ap -l stage $c_ap2 -vvv'      # run playbook host-limited: stage
-alias app='$c_ap -l prod $c_ap2 -vvv'       # run playbook host-limited: prod
-alias aplm='$apd -t mod'                    # run dev play with tag: mod
-alias aplr='$apd -t reset'                  # run dev play with tag: reset
-alias aal='ansible -i $p_inv local -a'      # run adhoc command: local [command]
-alias aad='ansible -i $p_inv dev -a'        # run adhoc command: dev [command]
-alias aas='ansible -i $p_inv stage -a'      # run adhoc command: stage [command]
-alias aap='ansible -i $p_inv prod -a'       # run adhoc command: prod [command]
-alias aaP='ansible -i $p_inv all -m ping'   # run adhoc ping: all
+
+# goto aliases
+src=$HOME/src
+cfg=$src/config
+alias gsrc='cd $src; ls -ahF'
+alias gpro='cd $cfg/provision; ls -ahF'     # goto BuS folder
+alias gbin='cd $cfg/bin; ls -ahF'      # goto BuS folder
+alias gdot='cd $cfg/dotfiles; ls -ahF' # goto BuS folder
+alias gcht='cd $src/cheats; ls -ahF'          # goto BuS folder
+
+
+
+
+# disabled aliases
+# alias avl='ansible-vault edit $p_vl'        # decrypt & edit vault_local.yml
+# alias avs='ansible-vault edit $p_vs'        # decrypt & edit vault_server.yml
+# alias ave='ansible-vault encrypt'           # add file encryption [path/file]
+# alias avd='ansible-vault decrypt'           # remove file encryption [path/file]
+# alias apl='$c_ap -l local -K $c_ap2 -vvv'   # run playbook host-limited: local
+# alias apd='$c_ap -l dev $c_ap2 -vvv'        # run playbook host-limited: dev
+# alias aps='$c_ap -l stage $c_ap2 -vvv'      # run playbook host-limited: stage
+# alias app='$c_ap -l prod $c_ap2 -vvv'       # run playbook host-limited: prod
+# alias aplm='$apd -t mod'                    # run dev play with tag: mod
+# alias aplr='$apd -t reset'                  # run dev play with tag: reset
+# alias aal='ansible -i $p_inv local -a'      # run adhoc command: local [command]
+# alias aad='ansible -i $p_inv dev -a'        # run adhoc command: dev [command]
+# alias aas='ansible -i $p_inv stage -a'      # run adhoc command: stage [command]
+# alias aap='ansible -i $p_inv prod -a'       # run adhoc command: prod [command]
+# alias aaP='ansible -i $p_inv all -m ping'   # run adhoc ping: all
 # silence & push to bg; ssh to vm
-alias vuwaf='gwaf && vagrant rsync-back > /dev/null && vagrant rsync-auto > /dev/null & ssh waf && fg'
+# alias vuwaf='gwaf && vagrant rsync-back > /dev/null && vagrant rsync-auto > /dev/null & ssh waf && fg'
 # rsync host to guest
-alias synca='vagrant rsync-auto > /dev/null && fg'
-alias syncb='vagrant rsync-back'            # one-shot rsync from guest to host
-alias vst='vagrant status'                  # run from vagrant project directory
-alias vup='vagrant up'                      # "
-alias vpro='vagrant provision'              # "
-alias vhal='vagrant halt'                   # "
-alias vrel='vagrant reload'                 # "
-alias vssh='vagrant ssh'                    # "
-alias vkil='vagrant destroy'                # "
-alias vsus='vagrant suspend'                # "
-alias vres='vagrant resume'                 # "
+# alias synca='vagrant rsync-auto > /dev/null && fg'
+# alias syncb='vagrant rsync-back'            # one-shot rsync from guest to host
+# alias vst='vagrant status'                  # run from vagrant project directory
+# alias vup='vagrant up'                      # "
+# alias vpro='vagrant provision'              # "
+# alias vhal='vagrant halt'                   # "
+# alias vrel='vagrant reload'                 # "
+# alias vssh='vagrant ssh'                    # "
+# alias vkil='vagrant destroy'                # "
+# alias vsus='vagrant suspend'                # "
+# alias vres='vagrant resume'                 # "

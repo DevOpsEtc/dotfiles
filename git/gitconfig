@@ -1,12 +1,11 @@
-
-  #######################################################
-  ##  filename: .gitcongif                             ##
-  ##  path:     ~/src/config/dotfiles/git/             ##
-  ##  symlink:  ~/                                     ##
-  ##  purpose:  git configuration                      ##
-  ##  date:     04/24/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
-  #######################################################
+#######################################################
+##  filename: .gitcongif                             ##
+##  path:     ~/src/config/dotfiles/git/             ##
+##  symlink:  ~/                                     ##
+##  purpose:  git configuration                      ##
+##  date:     04/24/2016                             ##
+##  repo:     https://github.com/WebAppNut/dotfiles  ##
+#######################################################
 
 [user]
 	name = WebAppNut

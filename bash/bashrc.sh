@@ -32,10 +32,11 @@ export green=$(tput bold)$(tput setaf 64)   # text: bold & green
 # p_vs=$p_ply/vars/vault_server.yml           # path: ansible vault_server.yml
 # c_ap="ansible-playbook -i $p_inv $p_pbk"    # command: playbook & options
 # c_ap2=--ask-vault-pass                      # command: playbook vault option
+export NVM_DIR="$HOME/.nvm"                 # nvm working directory
+export NVM_SCR="$NVM_DIR/nvm.sh"            # nvm script path
+[ -s "$NVM_SCR" ] && . "$NVM_SCR"           # source nvm script
 cask_app=--appdir=/Applications             # path: symlinked cask apps
 export HOMEBREW_CASK_OPTS="$cask_app"       # brew cask install options
-# export NVM_DIR="$HOME/.nvm"                 # nvm working directory
-# . "$(brew --prefix nvm)/nvm.sh"             # source nvm script
 p_brw=/usr/local/bin:/usr/local/sbin        # path: homebrew apps
 p_bin=$HOME/.bin                            # path: custom shell scripts
 export PATH="$p_brw:$p_bin:$PATH"           # append to $PATH statement
@@ -68,9 +69,7 @@ scratch() {
       ;;
     ps|push)  # add item to bottom of list
       if [ ! -z "$1" ]; then           # do if argument passed
-        unset str                      # clear temporary string
-        str="$(echo "${@:2}")"         # assign value to argument(s)
-        echo "- $str" >> $scratch_file # append final string to scratch
+        echo "- ${@:2}" >> $scratch_file # append final string to scratch
       fi
       ;;
     sh|shift ) # add scratch item to front of list
