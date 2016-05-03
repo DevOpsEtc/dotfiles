@@ -34,6 +34,8 @@ export green=$(tput bold)$(tput setaf 64)   # text: bold & green
 # c_ap2=--ask-vault-pass                      # command: playbook vault option
 cask_app=--appdir=/Applications             # path: symlinked cask apps
 export HOMEBREW_CASK_OPTS="$cask_app"       # brew cask install options
+# export NVM_DIR="$HOME/.nvm"                 # nvm working directory
+# . "$(brew --prefix nvm)/nvm.sh"             # source nvm script
 p_brw=/usr/local/bin:/usr/local/sbin        # path: homebrew apps
 p_bin=$HOME/.bin                            # path: custom shell scripts
 export PATH="$p_brw:$p_bin:$PATH"           # append to $PATH statement
