@@ -1,30 +1,34 @@
   #######################################################
   ##  filename: bashrc.sh                              ##
   ##  path:     ~/src/config/dotfiles/bash/            ##
-  ##  symlink:  ~/.bashrc                              ##
   ##  purpose:  bash shell configuration               ##
-  ##  date:     04/23/2016                             ##
+  ##  date:     05/06/2016                             ##
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
+
+src=$HOME/src                               # path to src folder
+cfg=$src/config                             # path to config folder
 
 export EDITOR="atom -nw"                    # use atom as default text editor
 export GIT_EDITOR=$EDITOR                   # use vim in as default git editor
 export GREP_OPTIONS='--color=auto'          # always colorize grep matches
-export HISTFILE=$HOME/.bash_hist            # command history filepath
+export HISTFILE=$src/.bash_history         # command history filepath
 export HISTFILESIZE=5000                    # max commands stored in history
 export HISTSIZE=5000                        # max commands to save in a session
 export HISTTIMEFORMAT='%D %T '              # prefix timestamp on history list
 export HISTCONTROL=ignoreboth:erasedups     # ignore leading space & kill dups
-export HISTIGNORE="?:??:htop:vim"           # ignore commands; 1 & 2 character
-export VISUAL=$EDITOR                       # use vim in visudo & crontab
-export rs=$(tput sgr0)                      # text: reset attributes
-export blue=$(tput bold)$(tput setaf 33)    # text: bold & blue
-export red=$(tput bold)$(tput setaf 160)    # text: bold & red
-export yellow=$(tput bold)$(tput setaf 136) # text: bold & yellow
-export white=$(tput bold)$(tput setaf 7)    # text: bold & white
-# export gray=$(tput bold)$(tput setaf 250)   # text: bold & gray
-export gray=$(tput setaf 250)               # text: bold & gray
-export green=$(tput bold)$(tput setaf 64)   # text: bold & green
+export HISTIGNORE="?:??:htop:vim:atom"      # ignore commands; 1 & 2 character
+export VISUAL=$EDITOR                       # use atom in visudo & crontab
+export rs=$(tput sgr0)                       # text: reset attributes
+export blue=$(tput setaf 33)                 # text: blue
+export gray=$(tput setaf 250)                # text: gray
+export green=$(tput setaf 64)                # text: green
+export greenb=$(tput bold)$(tput setaf 64)   # text: green & bold
+export red=$(tput setaf 160)                 # text: red
+export redb=$(tput bold)$(tput setaf 160)    # text: red & bold
+export yellow=$(tput setaf 136)              # text: yellow
+export yellowb=$(tput bold)$(tput setaf 136) # text: yellow & bold
+export white=$(tput setaf 7)                 # text: white
 # p_ply=$HOME/work/provision/playbook         # path: ansible assets
 # p_inv=$p_ply/inventory                      # path: ansible inventory
 # p_pbk=$p_ply/playbook.yml                   # path: ansible main playbook
@@ -43,41 +47,41 @@ export PATH="$p_brw:$p_bin:$PATH"           # append to $PATH statement
 scratch() {
   # purpose: store temporary notes in flat file; bash does not do env array
   # path to scratch file
-  scratch_file=$HOME/src/.scratch
+  scratch=$HOME/src/.scratch
   # create scratch file if not already exists
-  [ -f $scratch_file ] || touch $scratch_file
+  [ -f $scratch ] || touch $scratch
   scratch_count() {
     # purpose: count scratch entries
-    sc=$(wc -l < $scratch_file | tr -d ' ')
+    sc=$(wc -l < $scratch | tr -d ' ')
   }
   case $1 in
     l|ls|list ) # list scratch item(s)
       scratch_count
       echo -e "$yellow\n \bScratch Items: $sc $rs"
-      echo -e "$yellow\n \b$(cat $scratch_file) $rs"
+      echo -e "$yellow\n \b$(cat $scratch) $rs"
       ;;
     o|open )  # edit scratch file
-      open $scratch_file
+      open $scratch
       ;;
     rm|remove)  # clear scratch content; overide no clobber setting
-      >| $scratch_file
+      >| $scratch
       ;;
     pp|pop )  # copy last item (minus bullet) to clipboard; remove from list
-      echo -n $(awk 'END{gsub("- ", ""); print}' $scratch_file) | pbcopy
+      echo -n $(awk 'END{print substr($0, index($0, $2))}' $scratch) | pbcopy
       echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
-      sed -i '' '$d' $scratch_file
+      sed -i '' '$d' $scratch
       ;;
     ps|push)  # add item to bottom of list
       if [ ! -z "$1" ]; then           # do if argument passed
-        echo "- ${@:2}" >> $scratch_file # append final string to scratch
+        echo "- ${@:2}" >> $scratch # append final string to scratch
       fi
       ;;
     sh|shift ) # add scratch item to front of list
       ;;
     sp|splice ) # remove scratch item matching argument
-      echo -n $(awk "/$2/ {gsub(\"- \", \"\"); print}" $scratch_file) | pbcopy
+      echo -n $(awk "/$2/ {gsub(\"- \", \"\"); print}" $scratch) | pbcopy
       echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
-      sed -i '' "/$2/d" $scratch_file
+      sed -i '' "/$2/d" $scratch
       ;;
     \?|help|man ) # display usage tips
       echo -e "$yellow\n \busage: s [words]"
@@ -104,19 +108,19 @@ prompt() {
     echo;'
 
   GIT_PROMPT_ONLY_IN_REPO=1                 # appends git repo info to PS1
-  GIT_PROMPT_THEME=Custom                   # custom theme .git-prompt-colors.sh
+  GIT_PROMPT_THEME=Custom                   # custom .git-prompt-colors.sh
   # GIT_PROMPT_FETCH_REMOTE_STATUS=0        # no fetch remote status
   # GIT_PROMPT_SHOW_UPSTREAM=1              # show upstream tracking branch
 
   # build out custom PS1 prompt
-  PS1='\[\033]0;\w\007\]'                   # xterm title: pwd $HOME = short ~/
-  # PS1+='\[$blue\]\w'                        # pwd $HOME = short ~/
-  PS1+='\[$gray\]\w'                        # pwd $HOME = short ~/
-  PS1+='\[$yellow\]'                        # set dynamic count text color
-  PS1+='$([ $sc -gt 0 ] && echo \ ⁼$sc)'    # show scratch note count if > 0
-  PS1+='$([ \j -gt 0 ] && echo \ *\j)'      # show background job count if > 0
-  PS1+=' \[$red\]❯\[$yellow\]❯\[$green\]❯'  # multicolored unicode symbols
-  PS1+='\[$rs\] '                           # reset color; space after prompt
+  PS1='\[\033]0;\w\007\]'                     # xterm title: pwd = ~/
+  # PS1+='\[$blue\]\w'                         # pwd $HOME = short ~/
+  PS1+='\[$gray\]\w'                          # pwd $HOME = short ~/
+  PS1+='\[$yellow\]'                          # set dynamic count text color
+  PS1+='$([ $sc -gt 0 ] && echo \ ⁼$sc)'      # show scratch note count if > 0
+  PS1+='$([ \j -gt 0 ] && echo \ *\j)'        # show background job count > 0
+  PS1+=' \[$redb\]❯\[$yellowb\]❯\[$greenb\]❯' # multicolored unicode symbols
+  PS1+='\[$rs\] '                             # reset color; space after prompt
 }
 alias_list() {
   # display loaded aliases
@@ -157,7 +161,8 @@ history_search() {
       cmd_c='(IFS="|$IFS"; history | grep -icwE "${*:2}")'
       echo -e "$yellow \b$ "$cmd": $rs"
       eval ${cmd}
-      echo -e "$yellow \b**** found $(eval "${cmd_c}") lines matching one word or another ****"
+      echo -e "$yellow \b**** found $(eval "${cmd_c}") lines matching one \
+      word or another ****"
     elif [ "$1" == "=" ]; then
       # multi-term AND search; case-insensitive
       # store supplied argument count
@@ -183,7 +188,8 @@ history_search() {
       echo -e "$yellow \b$ "$cmd": $rs"
       eval "${cmd}"
       cmd+=" -c"
-      echo -e "$yellow \b**** found $(eval "${cmd}") lines matching all words ****"
+      echo -e "$yellow \b**** found $(eval "${cmd}") lines matching all \
+      words ****"
     else
       # do if only one argument passed
       if [ -z "$2" ]; then
@@ -192,7 +198,8 @@ history_search() {
         echo -e "$yellow \b$ "$cmd": $rs"
         eval "${cmd}"
         cmd+=" -c"
-        echo -e "$yellow \b**** found $(eval "${cmd}") lines with matching pattern ****"
+        echo -e "$yellow \b**** found $(eval "${cmd}") lines with matching \
+        pattern ****"
       # do if additional paramters were passed
       else
         echo -e "$red\n \b **** unquoted spaces **** $rs"
@@ -207,14 +214,17 @@ history_search() {
     echo -e "example: $ hs 'sed -e'         # quote wrap pattern if spaces"
     echo -e "example: $ hs + sed echo       # multiterm:OR; space separated"
     echo -e "example: $ hs + 'sed -e' echo  # lines matching any"
-    echo -e "example: $ hs = 'sed -e' echo  # multiterm:AND; lines matching all"
-    echo -e "example: $ hs + win            # limit to word match, not pattern"
+    echo -e "example: $ hs = 'sed -e' echo  # multiterm:AND; lines matching"
+    echo -e "example: $ hs + win            # limit word match, not pattern"
   fi
 }
 ls_octal() {
   # long list showing octal permissions & symbolic
   # ran against $PWD if no optional [arg]
-  ls -AlhF "$@" | awk '{k = 0; for (g=2; g>=0; g--) for (p=2; p>=0; p--) {c = substr($1, 10 - (g * 3 + p), 1); if (c ~ /[sS]/) k += g * 02000; else if (c ~ /[tT]/) k += 01000; if (c ~ /[rwxts]/) k += 8^g * 2^p} if (k) printf("%04o ", k);print;}'
+  ls -AlhF "$@" | awk '{k = 0; for (g=2; g>=0; g--) for (p=2; p>=0; p--) \
+  {c = substr($1, 10 - (g * 3 + p), 1); if (c ~ /[sS]/) k += g * 02000; \
+else if (c ~ /[tT]/) k += 01000; if (c ~ /[rwxts]/) k += 8^g * 2^p} \
+  if (k) printf("%04o ", k);print;}'
 }
 make_empty_file() {
   # purpose: create empty file containing all zeros
@@ -222,7 +232,8 @@ make_empty_file() {
     tmp=$1_$2b.tmp
     echo -e "$green\n \bcreating empty $1 $2b file... \n$rs"
     mkfile $1$2 $1_$2b.tmp
-    echo -e "$blue \bcreated: $PWD/$tmp\n \bsize: $(du -h $tmp | awk '{ print $1 }') $rs"
+    echo -e "$blue \bcreated: $PWD/$tmp\n \bsize: $(du -h $tmp | awk \
+    '{ print $1 }') $rs"
   else
 		echo -e "$red\n \busage: m0 [size] [b|k|m|g]"
     echo -e "example: $ m0 1 m"
@@ -250,15 +261,15 @@ usb_clean() {
 		echo -e "$blue\n \busb drive clean complete... safe to remove $rs"
   else
 		echo -e "$yellow\n \busage: usb_clean [drive_name]"
-    echo -e "available mounted usb drives: $(diskutil list | awk '/DOS_FAT/ {print $3}') $rs"
+    echo -e "available mounted usb drives: $(diskutil list | awk '/DOS_FAT/ \
+    {print $3}') $rs"
   fi
 }
 init() {
-  prompt                                    # build custom prompt
-  for f in ~/.bash_extra/*; do . "$f"; done # source additional directives
-  umask 002                                 # set default perms @dir/files
-  set -o noclobber                          # no redirect overwrite; override >|
-  shopt -s histappend                       # append history; no clobber
+  prompt                  # build custom prompt
+  umask 002               # set default perms @dir/files
+  set -o noclobber        # no redirect overwrite; override >|
+  shopt -s histappend     # append history; no clobber
 }
 
 init "$@"

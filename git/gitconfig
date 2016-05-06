@@ -3,7 +3,7 @@
 ##  path:     ~/src/config/dotfiles/git/             ##
 ##  symlink:  ~/                                     ##
 ##  purpose:  git configuration                      ##
-##  date:     04/24/2016                             ##
+##  date:     05/03/2016                             ##
 ##  repo:     https://github.com/WebAppNut/dotfiles  ##
 #######################################################
 
@@ -14,21 +14,14 @@
 	editor = atom
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/src/config/dotfiles/git/gitignore
-[sendemail]
-	# smtpencryption = tls
-	# smtpserver =
-	# smtpuser =
-	# smtppass =
-	# smtpserverport =
 [format]
 	# pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
 [log]
 	# date = relative
 [web]
-	# browser = safari
-	browser = google-chrome
-[instaweb]
-	httpd = apache2 -f
+	browser = ch
+[browser "ch"]
+	cmd = open -a \"/Applications/Google Chrome.app\"
 [rerere]
 	enabled = 1
 	autoupdate = 1
@@ -54,9 +47,6 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
-[github]
-	user = WebAppFlow
-	# token =
 [gitflow "prefix"]
 	feature = feature-
 	release = release-
@@ -99,7 +89,8 @@
 	fk = fsck                                 #
 	g = grep -p                               # print content matching [pattern]
 	                                          # ↓ print formatted commit logs
-	l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN %Creset%s %Cred%d' --date=relative
+	l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN \
+	%Creset%s %Cred%d' --date=relative
 	ld = !git l -p                            # print commit log diff
 	lg = !git l --graph                       # print commit log graph
 	ll = !git ld -1                           # print commit log diff (last entry)
@@ -157,7 +148,7 @@
 	rl = "!git remote get-url origin | awk \
 	'{sub(/:/,\"/\");sub(/git\\@/,\"https://\");sub(/\\.git/,\"\")};{print}'"
 	rm = remote rename                        #
-	ro = !open $(git rl)			  # open remote repo link in browser
+	ro = !open $(git rl)                      # open remote repo link in browser
 	rp = remote prune                         #
 	rs = remote show                          #
 	rao = remote add origin                   #
@@ -175,4 +166,5 @@
 	ss = stash save -u                        # save working dir & untracked
 	sw = stash show                           # show saved state
 	                                          # ↓ update index: add/update/remove
-	up = !git ls -dmoz --exclude-standard | xargs -0 git update-index --add --remove && git s
+	up = !git ls -dmoz --exclude-standard | xargs -0 git update-index \
+	--add --remove && git s

@@ -60,6 +60,8 @@
   autosave:
     enabled: true
   core:
+    audioBeep: false
+    automaticallyUpdate: false
     disabledPackages: [
       "vim-mode-plus"
       "pigments"
@@ -147,16 +149,24 @@
       fontSize: "16"
   "spell-check": {}
   "status-bar": {}
-  tabs: {}
+  tabs:
+    enableVcsColoring: true
   "tree-view":
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
+".diff.source":
+  editor:
+    preferredLineLength: 78
+".gfm.source":
+  "wrap-guide":
+    enabled: false
 ".js.source":
   editor:
     showIndentGuide: true
 ".plain.text":
   editor:
     softWrap: true
+  "wrap-guide":
+    enabled: false

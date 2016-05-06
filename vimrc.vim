@@ -33,7 +33,7 @@ Plugin 'majutsushi/tagbar'
                                           " ↓ easytags dependency
 Plugin 'xolox/vim-misc'
                                           " ↓ auto tagging
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
                                           " ↓ fuzzy finder navigation
 Plugin 'kien/ctrlp.vim'
                                           " ↓ delimiter emphasis
@@ -204,7 +204,6 @@ let g:ctrlp_user_command = 'find -L %s -type d \( -name "\.*" -o
   \ -iname "*.tar" -o -iname "*.tiff" -o -iname "*.webloc" -o -iname "*.url" -o
   \ -iname "*.xls" -o -iname "*.xlsx" -o -iname "*.zip"
   \ \) -prune -o -print'
-.backup
 " }}}
 " Netrw Settings {{{
 let g:netrw_liststyle = 3                 " tree layout
@@ -224,9 +223,9 @@ let g:startify_session_persistence = 1                     " auto save sessions
 let g:startify_session_delete_buffers = 1                  " bd open buffers
                                                            " ↓ start #s at 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-let g:startify_custom_header = [
-
- \ ]
+" let g:startify_custom_header = [
+"
+"  \ ]
 hi StartifyBracket ctermfg=244
 hi StartifyFile    ctermfg=64
 hi StartifyFooter  ctermfg=240
