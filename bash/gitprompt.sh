@@ -1,0 +1,1 @@
+/Users/gp/src/config/dotfiles/bash-git-prompt/gitprompt.sh
