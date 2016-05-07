@@ -3,7 +3,7 @@
 ##  path:     ~/src/config/dotfiles/git/             ##
 ##  symlink:  ~/                                     ##
 ##  purpose:  git configuration                      ##
-##  date:     05/03/2016                             ##
+##  date:     05/07/2016                             ##
 ##  repo:     https://github.com/WebAppNut/dotfiles  ##
 #######################################################
 
@@ -89,7 +89,8 @@
 	fk = fsck                                 #
 	g = grep -p                               # print content matching [pattern]
 	                                          # ↓ print formatted commit logs
-	l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN %Creset%s %Cred%d' --date=relative
+	l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN %Creset%s \
+	%Cred%d' --date=relative
 	ld = !git l -p                            # print commit log diff
 	lg = !git l --graph                       # print commit log graph
 	ll = !git ld -1                           # print commit log diff (last entry)
@@ -144,7 +145,8 @@
 	rr = remote rm                            #
 	rv = remote -v                            #
 																						# ↓ display remote repo link
-	rl = "!git remote get-url origin | awk '{sub(/:/,\"/\");sub(/git\\@/,\"https://\");sub(/\\.git/,\"\")};{print}'"
+	rl = "!git remote get-url origin | sed -e 's/.git/''/g' -e 's/:/\\//' \
+	-e 's/^/https:\\/\\//'"
 	rm = remote rename                        #
 	ro = !open $(git rl)                      # open remote repo link in browser
 	rp = remote prune                         #

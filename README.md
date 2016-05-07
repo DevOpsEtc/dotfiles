@@ -1,7 +1,6 @@
 **My personal dotfiles.**
 
 **Roadmap:**
-- Fix awk issue with remote open git alias
 - Clean up functions in bashrc
     - Switch conditionals to case statements where appropriate
     - Move to separate functions file & source

@@ -2,7 +2,7 @@
   ##  filename: bashrc.sh                              ##
   ##  path:     ~/src/config/dotfiles/bash/            ##
   ##  purpose:  bash shell configuration               ##
-  ##  date:     05/06/2016                             ##
+  ##  date:     05/07/2016                             ##
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
