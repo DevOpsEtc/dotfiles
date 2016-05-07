@@ -1,9 +1,9 @@
 ########################################################################
-##  filename: fstab.sh  					    							                  ##
-##  path:     ~/src/config/dotfiles/								                  ##
-##  symlink:  /etc/fstab									                            ##
-##  purpose:  file systems table										                  ##
-##  date:     04/07/2015													                    ##
+##  filename: fstab.sh                                                ##
+##  path:     ~/src/config/dotfiles/                                  ##
+##  symlink:  /etc/fstab                                              ##
+##  purpose:  file systems table                                      ##
+##  date:     04/07/2015                                              ##
 ##  repo:     https://github.com/WebAppNut/dotfiles                   ##
 ##  notes:    diskutil info "/Volumes/backup-rm" | grep 'Volume UUID' ##
 ########################################################################

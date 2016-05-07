@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
   #######################################################
   ##  filename: git-prompt-colors.sh                   ##

@@ -29,7 +29,8 @@ alias cp='cp -iv'                           # copy; confirm; verbose
 alias cpwd="pwd | tr -d '\n' |pbcopy"       # copy working directory path
 alias ci="fc -ln -1 | tr -d '\n' |pbcopy"   # copy last command
 # alias cop="!! | pbcopy" 	                    # copy output of last command
-alias co='fc -ln -1 | awk '\''{$1=$1}1'\'' | pbcopy'
+# turn into function:
+# alias co='fc -ln -1 | awk '\''{$1=$1}1'\'' | pbcopy'
 alias dns-f='dscacheutil -flushcache'       # flush dns cache
 alias emv='set -o vi; echo "vi mode"'       # set edit mode to vi
 alias eme='set -o emacs; echo "emacs mode"' # set edit mode to emacs (default)

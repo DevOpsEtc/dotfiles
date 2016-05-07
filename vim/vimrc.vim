@@ -22,7 +22,7 @@ set backup                                " enable backups
 set backupdir=~/src/config/dotfiles/_private/vim/backup/ " path to backup files
 " set breakindent                           " matched indenting of wrapped lines
 set cursorline                            " highlight line having cursor
-set directory=~/src/config/dotfiles/_private/vim/swap/            " path to swap files
+set directory=~/src/config/dotfiles/_private/vim/swap/  " path to swap files
 set expandtab                             " convert tabs to spaces
 " set foldcolumn=1                        " show plus/minus for mouse clicks
 set foldenable                            " auto fold code
@@ -65,7 +65,7 @@ set tabstop=2                             " numbers of spaces of tab character
 set timeoutlen=1000                       " mapping delays
 set ttimeoutlen=10                        " keycode delays
 set ttyfast                               " smoother changes
-set undodir=~/src/config/dotfiles/_private/vim/undo/              " path to undo files
+set undodir=~/src/config/dotfiles/_private/vim/undo/ " path to undo files
 set undofile                              " save undo's after file closes
 set undolevels=1000                       " max undos
 set undoreload=10000                      " max undos line per buffer

@@ -221,14 +221,7 @@ let g:startify_session_persistence = 1                     " auto save sessions
 let g:startify_session_delete_buffers = 1                  " bd open buffers
                                                            " ↓ start #s at 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-let g:startify_custom_header = [
- \ ' __      __   _      _             ___ _                  ',
- \ ' \ \    / /__| |__  /_\  _ __ _ __| __| |_____ __ __ ○°⸰  ',
- \ '  \ \/\/ / -_) ''_ \/ _ \| ''_ \ ''_ \ _|| / _ \ V  V /   ',
- \ '   \_/\_/\___|_.__/_/ \_\ .__/ .__/_| |_\___/\_/\_/       ',
- \ '                        |_|  |_|                          ',
- \ '',
- \ ]
+let g:startify_custom_header = [WebAppNut]
 hi StartifyBracket ctermfg=244
 hi StartifyFile    ctermfg=64
 hi StartifyFooter  ctermfg=240

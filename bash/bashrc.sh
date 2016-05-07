@@ -39,11 +39,11 @@ export white=$(tput setaf 7)                 # text: white
 export NVM_DIR="$HOME/.nvm"                 # nvm working directory
 export NVM_SCR="$NVM_DIR/nvm.sh"            # nvm script path
 [ -s "$NVM_SCR" ] && . "$NVM_SCR"           # source nvm script
-cask_app=--appdir=/Applications             # path: symlinked cask apps
+cask_app=--appdir="/Applications"           # path to symlinked cask apps
 export HOMEBREW_CASK_OPTS="$cask_app"       # brew cask install options
-p_brw=/usr/local/bin:/usr/local/sbin        # path: homebrew apps
-p_bin=$HOME/.bin                            # path: custom shell scripts
-export PATH="$p_brw:$p_bin:$PATH"           # append to $PATH statement
+p_brew=/usr/local/bin:/usr/local/sbin       # path: homebrew apps
+p_bin=$cfg/bin                              # path: custom shell scripts
+export PATH="$p_brew:$p_bin:$PATH"          # append to $PATH statement
 scratch() {
   # purpose: store temporary notes in flat file; bash does not do env array
   # path to scratch file
@@ -63,7 +63,7 @@ scratch() {
     o|open )  # edit scratch file
       open $scratch
       ;;
-    rm|remove)  # clear scratch content; overide no clobber setting
+    rm|remove )  # clear scratch content; overide no clobber setting
       >| $scratch
       ;;
     pp|pop )  # copy last item (minus bullet) to clipboard; remove from list
@@ -71,9 +71,9 @@ scratch() {
       echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
       sed -i '' '$d' $scratch
       ;;
-    ps|push)  # add item to bottom of list
+    ps|push )  # add item to bottom of list
       if [ ! -z "$1" ]; then           # do if argument passed
-        echo "- ${@:2}" >> $scratch # append final string to scratch
+        echo "- ${*:2}" >> $scratch # append final string to scratch
       fi
       ;;
     sh|shift ) # add scratch item to front of list
@@ -129,31 +129,31 @@ alias_list() {
 }
 backup() {
   # purpose: make backup copy of directory or file w/ appended date
-	if [ ! -z "$1" ]; then
+  if [ ! -z "$1" ]; then
     echo -e "$green\n \bcreating backup file... \n$rs"
     cp -a $1{,$(date +_%Y.%m.%d_%H.%M)}
     echo -e "$blue \bsuccess: \n$(ls -d -1 $1*) $rs"
   else
-		echo -e "$yellow\n \busage: bak [path/to/file]"
+    echo -e "$yellow\n \busage: bak [path/to/file]"
     echo -e "example: $ bak ~/bud/build $rs"
   fi
 }
 history_remove() {
   # delete a range of contiguous lines from command history
   # arguments reversed because line numbers are dynamic
-	if [ ! -z "$1" ]; then
+  if [ ! -z "$1" ]; then
     for line in $(seq $2 $1); do
       history -d $line
     done
   else
-		echo -e "$yellow\n \busage: hd [line_start] [line_end]"
+    echo -e "$yellow\n \busage: hd [line_start] [line_end]"
     echo -e "example: $ hd 405 409$rs"
   fi
 }
 history_search() {
   # search command history for matching term; multiple terms via [arg]
   # do if argument was passed
-	if [ ! -z "$1" ]; then
+  if [ ! -z "$1" ]; then
     if [ "$1" == "+" ]; then
       # multi-term OR search; case-insensitive
       # run in subshell; puts "|" between arguments for proper grep syntax
@@ -228,29 +228,29 @@ else if (c ~ /[tT]/) k += 01000; if (c ~ /[rwxts]/) k += 8^g * 2^p} \
 }
 make_empty_file() {
   # purpose: create empty file containing all zeros
-	if [ ! -z "$1" ]; then
+  if [ ! -z "$1" ]; then
     tmp=$1_$2b.tmp
     echo -e "$green\n \bcreating empty $1 $2b file... \n$rs"
     mkfile $1$2 $1_$2b.tmp
     echo -e "$blue \bcreated: $PWD/$tmp\n \bsize: $(du -h $tmp | awk \
     '{ print $1 }') $rs"
   else
-		echo -e "$red\n \busage: m0 [size] [b|k|m|g]"
+    echo -e "$red\n \busage: m0 [size] [b|k|m|g]"
     echo -e "example: $ m0 1 m"
   fi
 }
 cheat() {
-	# purpose: display cheat or particular term inside cheat
+  # purpose: display cheat or particular term inside cheat
   # do if no cheat argument passed
-	if [ -z "$1" ]; then
-		echo -e "$yellow\n \busage: [cheat] [keyword] [trailing_line_num] $rs"
+  if [ -z "$1" ]; then
+    echo -e "$yellow\n \busage: [cheat] [keyword] [trailing_line_num] $rs"
     echo -e "$yellow\n \bexample: $ ch atom line 4 $rs"
   # do if number of trailing lines is blank; avoids invalid arg error
-	elif [ -z "$3" ]; then
-		grep -i "$2" -A0 ~/src/cheats/$1.txt | less -r
-	else
-		grep -i "$2" -A$3 ~/src/cheats/$1.txt
-	fi
+  elif [ -z "$3" ]; then
+    grep -i "$2" -A0 ~/src/cheats/$1.txt | less -r
+  else
+    grep -i "$2" -A$3 ~/src/cheats/$1.txt
+  fi
 }
 usb_clean() {
   # purpose: remove hidden files on usb drive for cleaner display on blu-ray/tv
@@ -258,9 +258,9 @@ usb_clean() {
     usb=/Volumes/$1
     rm -rf $usb/.{,_.}{_*,fseventsd,Spotlight-V*,Trashes}
     diskutil unmount $1
-		echo -e "$blue\n \busb drive clean complete... safe to remove $rs"
+    echo -e "$blue\n \busb drive clean complete... safe to remove $rs"
   else
-		echo -e "$yellow\n \busage: usb_clean [drive_name]"
+    echo -e "$yellow\n \busage: usb_clean [drive_name]"
     echo -e "available mounted usb drives: $(diskutil list | awk '/DOS_FAT/ \
     {print $3}') $rs"
   fi

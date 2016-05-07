@@ -63,10 +63,6 @@
     audioBeep: false
     automaticallyUpdate: false
     disabledPackages: [
-      "vim-mode-plus"
-      "pigments"
-      "symbols-tree-view"
-      "atom-ctags"
       "metrics"
       "exception-reporting"
       "atom-beautify"
@@ -118,6 +114,8 @@
     fontSize: 16
     invisibles: {}
     scrollPastEnd: true
+    showInvisibles: true
+    tabType: "soft"
   "export-html":
     lineNumber:
       use: false
@@ -129,6 +127,8 @@
     newGistsDefaultToPrivate: true
     openAfterCreate: true
   "git-plus": {}
+  linter: {}
+  "linter-shellcheck": {}
   minimap:
     plugins:
       codeglance: true
@@ -137,7 +137,6 @@
       "minimap-autohideDecorationsZIndex": 0
   "one-dark-ui": {}
   "open-recent": {}
-  pigments: {}
   "platformio-ide-terminal":
     core:
       mapTerminalsTo: "Folder"
@@ -158,7 +157,7 @@
     showOnStartup: false
 ".diff.source":
   editor:
-    preferredLineLength: 78
+    showIndentGuide: true
 ".gfm.source":
   "wrap-guide":
     enabled: false

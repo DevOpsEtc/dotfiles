@@ -7,14 +7,7 @@
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
-
-# Your snippets
-#
-# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
-# expand the prefix into a larger code block with templated values.
-#
-# You can create a new snippet in this file by typing "snip" and then hitting
-# tab.
+# create a new snippet in this file by typing "snip" and then hitting tab.
 #
 # An example CoffeeScript snippet to expand log to console.log:
 #
@@ -29,3 +22,39 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
+
+'.plain.text':
+  'header':
+    'prefix': 'h'
+    'body': """
+      #####################################################
+      ##  filename: .txt                                 ##
+      ##  path:     ~/src/cheats/                        ##
+      ##  date:     00/00/2016                           ##
+      ##  repo:     https://github.com/WebAppNut/cheats  ##
+      #####################################################
+
+      ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+      heading
+      ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+
+      """
+'.source.shell':
+  'header':
+    'prefix': 'h'
+    'body': """
+      #!/usr/bin/env bash
+
+      ##########################################################
+      ##  filename: .sh                                       ##
+      ##  path:     ~/src/config/bin                          ##
+      ##  symlink:  ~/                                        ##
+      ##  purpose:                                            ##
+      ##  date:     00/00/2016                                ##
+      ##  repo:     https://github.com/WebAppNut/             ##
+      ##  source:   $ . ~/src/config/bin/.sh                  ##
+      ##  note:                                               ##
+      ##########################################################
+
+
+      """

@@ -8,162 +8,163 @@
 #######################################################
 
 [user]
-	name = WebAppNut
-	email = WebAppNut@users.noreply.github.com
+  name = WebAppNut
+  email = WebAppNut@users.noreply.github.com
 [core]
-	editor = atom
-	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = ~/src/config/dotfiles/git/gitignore
+  editor = atom
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = ~/src/config/dotfiles/git/gitignore
 [format]
-	# pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+  # pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
 [log]
-	# date = relative
+  # date = relative
 [web]
-	browser = ch
+  browser = ch
 [browser "ch"]
-	cmd = open -a \"/Applications/Google Chrome.app\"
+  cmd = open -a \"/Applications/Google Chrome.app\"
 [rerere]
-	enabled = 1
-	autoupdate = 1
+  enabled = 1
+  autoupdate = 1
 [push]
-	default = matching
+  default = matching
 [color]
-	ui = auto
+  ui = auto
 [color "branch"]
-	current = yellow
-	local = green
-	remote = cyan
+  current = yellow
+  local = green
+  remote = cyan
 [color "diff"]
-	meta = yellow
-	frag = magenta
-	old = red
-	new = green
-	whitespace = red reverse
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+  whitespace = red reverse
 [color "status"]
-	added = green
-	changed = yellow
-	untracked = red
+  added = green
+  changed = yellow
+  untracked = red
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
-	prompt = false
+  prompt = false
 [gitflow "prefix"]
-	feature = feature-
-	release = release-
-	hotfix = hotfix-
-	support = support-
-	versiontag = v
+  feature = feature-
+  release = release-
+  hotfix = hotfix-
+  support = support-
+  versiontag = v
 [alias]
-	a = add --all                             # update index: add/modifiy/remove
-	ai = add -i                               #
-	                                          # ↓ list git aliases
-	al = ! git config --get-regexp ^alias. | sort | sed "s/alias./'$ g '/g"
-	ap = apply                                # apply patch to files and/or index
-	as = apply --stat                         #
-	ac = apply --check                        #
-	auth = log --format='%aN %cE'             # list repo author/email address
-	b = branch                                # list, create, or delete branches
-	ba = branch -a                            # add branch [name]
-	bd = branch -d                            # delete branch [name]
-	br = branch -r                            # list remote-tracking branches
-	bl = show-branch                          # show branches & respective commits
-	c = commit                                # record changes to repo
-	ca = commit -a                            # stage modified & deleted files
-	cm = commit -m                            # manually supply commit [message]
-	cem = commit --allow-empty -m             #
-	cam = commit -am                          #
-	cd = commit --amend                       #
-	cad = commit -a --amend                   #
-	ced = commit --allow-empty --amend        #
-	d = diff                                  # show changes between commits
-	dc = diff --cached                        #
-	dl = difftool                             #
-	dlc = difftool --cached                   #
-	dk = diff --check                         #
-	dp = diff --patience                      #
-	dck = diff --cached --check               #
-	f = fetch                                 # download objects & refs from repo
-	fo = fetch origin                         #
-	fu = fetch upstream                       #
-	fp = format-patch                         #
-	fk = fsck                                 #
-	g = grep -p                               # print content matching [pattern]
-	                                          # ↓ print formatted commit logs
-	l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN %Creset%s \
-	%Cred%d' --date=relative
-	ld = !git l -p                            # print commit log diff
-	lg = !git l --graph                       # print commit log graph
-	ll = !git ld -1                           # print commit log diff (last entry)
-	ls = ls-files                             # print indexed filenames
-	lsg = !git ls-files | grep -i             # print filenames matching [pattern]
-	lsx = ls-files -o -i --exclude-standard   # print excluded files
-	lsxl = !cat .gitignore                    # print .gitignore content
-	m = merge                                 # join 2(+) development histories
-	ma = merge --abort                        #
-	mc = merge --continue                     #
-	ms = merge --skip                         #
-	o = checkout                              # switch branches or restore tree
-	ob = checkout -b                          # create branch & switch to it
-	pr = prune -v                             #
-	ps = push                                 # update remote refs & objects
-	psf = push -f                             # force update remote repo
-	psu = push -u                             #
-	pso = push origin                         #
-	psao = push --all origin                  #
-	psfo = push -f origin                     #
-	psuo = push -u origin                     #
-	psom = push origin master                 #
-	psfom = push -f origin master             #
-	psuom = push -u origin master             #
-	pl = pull                                 # fetch/integrate repo or branch
-	plu = pull -u                             #
-	plo = pull origin                         #
-	plp = pull upstream                       #
-	plom = pull origin master                 #
-	plpm = pull upstream master               #
-	pb = pull --rebase                        #
-	pbo = pull --rebase origin                #
-	pbp = pull --rebase upstream              #
-	pbom = pull --rebase origin master        #
-	pbpm = pull --rebase upstream master      #
-	rb = rebase                               # forward-port local > upstream head
-	rba = rebase --abort                      #
-	rbc = rebase --continue                   #
-	rbi = rebase --interactive                # choose commits to rebase
-	rbs = rebase --skip                       #
-	re = reset                                # reset current HEAD to new state
-	                                          # $ g re [filename] for individual
-	rh = reset HEAD                           #
-	reh = reset --hard                        #
-	rem = reset --mixed                       #
-	res = reset --soft                        #
-	rehh = reset --hard HEAD                  #
-	remh = reset --mixed HEAD                 #
-	resh = reset --soft HEAD                  #
-	r = remote                                # manage set of tracked repositories
-	ra = remote add                           #
-	rr = remote rm                            #
-	rv = remote -v                            #
-																						# ↓ display remote repo link
-	rl = "!git remote get-url origin | sed -e 's/.git/''/g' -e 's/:/\\//' \
-	-e 's/^/https:\\/\\//'"
-	rm = remote rename                        #
-	ro = !open $(git rl)                      # open remote repo link in browser
-	rp = remote prune                         #
-	rs = remote show                          #
-	rao = remote add origin                   #
-	rau = remote add upstream                 #
-	rso = remote show origin                  #
-	rsu = remote show upstream                #
-	rpo = remote prune origin                 #
-	rpu = remote prune upstream               #
-	s = status -sb                            # working tree status; single line
-	sa = stash apply                          # apply saved state
-	sc = stash clear                          # remove all stashes
-	sd = stash drop                           # remove single stash [name] or last
-	sl = stash list --format='%gd %cr: %gs'   # list stashes w/ timestamp
-	sp = stash pop                            # remove stash and apply state
-	ss = stash save -u                        # save working dir & untracked
-	sw = stash show                           # show saved state
-	                                          # ↓ update index: add/update/remove
-	up = !git ls -dmoz --exclude-standard | xargs -0 git update-index --add --remove && git s
+  a = add --all                             # update index: add/modifiy/remove
+  ai = add -i                               #
+                                            # ↓ list git aliases
+  al = ! git config --get-regexp ^alias. | sort | sed "s/alias./'$ g '/g"
+  ap = apply                                # apply patch to files and/or index
+  as = apply --stat                         #
+  ac = apply --check                        #
+  auth = log --format='%aN %cE'             # list repo author/email address
+  b = branch                                # list, create, or delete branches
+  ba = branch -a                            # add branch [name]
+  bd = branch -d                            # delete branch [name]
+  br = branch -r                            # list remote-tracking branches
+  bl = show-branch                          # show branches & respective commits
+  c = commit                                # record changes to repo
+  ca = commit -a                            # stage modified & deleted files
+  cm = commit -m                            # manually supply commit [message]
+  cem = commit --allow-empty -m             #
+  cam = commit -am                          #
+  cd = commit --amend                       #
+  cad = commit -a --amend                   #
+  ced = commit --allow-empty --amend        #
+  d = diff                                  # show changes between commits
+  dc = diff --cached                        #
+  dl = difftool                             #
+  dlc = difftool --cached                   #
+  dk = diff --check                         #
+  dp = diff --patience                      #
+  dck = diff --cached --check               #
+  f = fetch                                 # download objects & refs from repo
+  fo = fetch origin                         #
+  fu = fetch upstream                       #
+  fp = format-patch                         #
+  fk = fsck                                 #
+  g = grep -p                               # print content matching [pattern]
+                                            # ↓ print formatted commit logs
+  l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN %Creset%s \
+  %Cred%d' --date=relative
+  ld = !git l -p                            # print commit log diff
+  lg = !git l --graph                       # print commit log graph
+  ll = !git ld -1                           # print commit log diff (last entry)
+  ls = ls-files                             # print indexed filenames
+  lsg = !git ls-files | grep -i             # print filenames matching [pattern]
+  lsx = ls-files -o -i --exclude-standard   # print excluded files
+  lsxl = !cat .gitignore                    # print .gitignore content
+  m = merge                                 # join 2(+) development histories
+  ma = merge --abort                        #
+  mc = merge --continue                     #
+  ms = merge --skip                         #
+  o = checkout                              # switch branches or restore tree
+  ob = checkout -b                          # create branch & switch to it
+  pr = prune -v                             #
+  ps = push                                 # update remote refs & objects
+  psf = push -f                             # force update remote repo
+  psu = push -u                             #
+  pso = push origin                         #
+  psao = push --all origin                  #
+  psfo = push -f origin                     #
+  psuo = push -u origin                     #
+  psom = push origin master                 #
+  psfom = push -f origin master             #
+  psuom = push -u origin master             #
+  pl = pull                                 # fetch/integrate repo or branch
+  plu = pull -u                             #
+  plo = pull origin                         #
+  plp = pull upstream                       #
+  plom = pull origin master                 #
+  plpm = pull upstream master               #
+  pb = pull --rebase                        #
+  pbo = pull --rebase origin                #
+  pbp = pull --rebase upstream              #
+  pbom = pull --rebase origin master        #
+  pbpm = pull --rebase upstream master      #
+  rb = rebase                               # forward-port local > upstream head
+  rba = rebase --abort                      #
+  rbc = rebase --continue                   #
+  rbi = rebase --interactive                # choose commits to rebase
+  rbs = rebase --skip                       #
+  re = reset                                # reset current HEAD to new state
+                                            # $ g re [filename] for individual
+  rh = reset HEAD                           #
+  reh = reset --hard                        #
+  rem = reset --mixed                       #
+  res = reset --soft                        #
+  rehh = reset --hard HEAD                  #
+  remh = reset --mixed HEAD                 #
+  resh = reset --soft HEAD                  #
+  r = remote                                # manage set of tracked repositories
+  ra = remote add                           #
+  rr = remote rm                            #
+  rv = remote -v                            #
+                                            # ↓ display remote repo link
+  rl = "!git remote get-url origin | sed -e 's/.git/''/g' -e 's/:/\\//' \
+  -e 's/^/https:\\/\\//'"
+  rm = remote rename                        #
+  ro = !open $(git rl)                      # open remote repo link in browser
+  rp = remote prune                         #
+  rs = remote show                          #
+  rao = remote add origin                   #
+  rau = remote add upstream                 #
+  rso = remote show origin                  #
+  rsu = remote show upstream                #
+  rpo = remote prune origin                 #
+  rpu = remote prune upstream               #
+  s = status -sb                            # working tree status; single line
+  sa = stash apply                          # apply saved state
+  sc = stash clear                          # remove all stashes
+  sd = stash drop                           # remove single stash [name] or last
+  sl = stash list --format='%gd %cr: %gs'   # list stashes w/ timestamp
+  sp = stash pop                            # remove stash and apply state
+  ss = stash save -u                        # save working dir & untracked
+  sw = stash show                           # show saved state
+                                            # ↓ update index: add/update/remove
+  up = !git ls -dmoz --exclude-standard | xargs -0 git update-index --add \
+  --remove && git s
