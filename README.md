@@ -1,13 +1,15 @@
 **My personal dotfiles.**
 
 **Roadmap:**
+- Kill git aware prompt (bash-git-prompt)
+- Roll own limited to branch, dirty symbols & forward/behind arrows
 - Clean up functions in bashrc
     - Switch conditionals to case statements where appropriate
     - Move to separate functions file & source
     - Scratch function: add shift/unshift parameters
     - Add function to copy output of last command to pbcopy
     - Add function to copy last command to pbcopy
-- Kill git aware prompt (bash-git-prompt); roll own limited to branch, dirty symbols & forward/behind arrows
+- Finish commenting gitconfig
 - Add tutorial with screenshots for repo cloning, forking, integrating & customizing
 - Cleanup new vimrc w/ minimal settings and no plugins
 
