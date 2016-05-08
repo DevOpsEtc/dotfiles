@@ -89,7 +89,7 @@
   fk = fsck                                 #
   g = grep -p                               # print content matching [pattern]
                                             # ↓ print formatted commit logs
-  l = log --pretty=format:'%C(yellow)%h %Cblue%>(14)%ad %Cgreen%aN %Creset%s \
+  l = log --pretty=format:'%C(blue)%h %Cgreen%>(14)%ad %C(yellow)%aN %Creset%s \
   %Cred%d' --date=relative
   ld = !git l -p                            # print commit log diff
   lg = !git l --graph                       # print commit log graph
