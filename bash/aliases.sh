@@ -2,7 +2,7 @@
   ##  filename: aliases.sh                             ##
   ##  path:     ~/src/config/dotfiles/bash/            ##
   ##  purpose:  bash command aliases                   ##
-  ##  date:     05/04/2016                             ##
+  ##  date:     05/11/2016                             ##
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
@@ -10,7 +10,7 @@
 alias gsrc='cd $src; ls -ahF'
 alias gcht='cd $src/cheats; ls -ahF'
 alias gtrn='cd $src/training; ls -ahF'
-alias gref='cd $src/training/refactoru; ls -ahF'    
+alias gboo='cd $src/training/bootcamp; ls -ahF'    
 alias gpro='cd $cfg/provision; ls -ahF'
 alias gbin='cd $cfg/bin; ls -ahF'
 alias gdot='cd $cfg/dotfiles; ls -ahF'
