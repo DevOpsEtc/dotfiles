@@ -6,12 +6,14 @@
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
-# goto aliases
-alias gsrc='cd $src; ls -ahF'               # goto src folder
-alias gcht='cd $src/cheats; ls -ahF'        # goto cheats folder
-alias gpro='cd $cfg/provision; ls -ahF'     # goto provision folder
-alias gbin='cd $cfg/bin; ls -ahF'           # goto bin folder
-alias gdot='cd $cfg/dotfiles; ls -ahF'      # goto dotfiles folder
+# goto folder aliases
+alias gsrc='cd $src; ls -ahF'
+alias gcht='cd $src/cheats; ls -ahF'
+alias gtrn='cd $src/training; ls -ahF'
+alias gref='cd $src/training/refactoru; ls -ahF'    
+alias gpro='cd $cfg/provision; ls -ahF'
+alias gbin='cd $cfg/bin; ls -ahF'
+alias gdot='cd $cfg/dotfiles; ls -ahF'
 
 alias ..='cd ..'                            # cd up 1 level
 alias ..2='cd ../..'                        # cd up 2 levels

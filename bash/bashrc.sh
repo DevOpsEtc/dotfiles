@@ -2,7 +2,7 @@
   ##  filename: bashrc.sh                              ##
   ##  path:     ~/src/config/dotfiles/bash/            ##
   ##  purpose:  bash shell configuration               ##
-  ##  date:     05/07/2016                             ##
+  ##  date:     05/11/2016                             ##
   ##  repo:     https://github.com/WebAppNut/dotfiles  ##
   #######################################################
 
@@ -19,16 +19,6 @@ export HISTTIMEFORMAT='%D %T '              # prefix timestamp on history list
 export HISTCONTROL=ignoreboth:erasedups     # ignore leading space & kill dups
 export HISTIGNORE="?:??:htop:vim:atom"      # ignore commands; 1 & 2 character
 export VISUAL=$EDITOR                       # use atom in visudo & crontab
-export rs=$(tput sgr0)                       # text: reset attributes
-export blue=$(tput setaf 33)                 # text: blue
-export gray=$(tput setaf 250)                # text: gray
-export green=$(tput setaf 64)                # text: green
-export greenb=$(tput bold)$(tput setaf 64)   # text: green & bold
-export red=$(tput setaf 160)                 # text: red
-export redb=$(tput bold)$(tput setaf 160)    # text: red & bold
-export yellow=$(tput setaf 136)              # text: yellow
-export yellowb=$(tput bold)$(tput setaf 136) # text: yellow & bold
-export white=$(tput setaf 7)                 # text: white
 # p_ply=$HOME/work/provision/playbook         # path: ansible assets
 # p_inv=$p_ply/inventory                      # path: ansible inventory
 # p_pbk=$p_ply/playbook.yml                   # path: ansible main playbook
@@ -44,54 +34,7 @@ export HOMEBREW_CASK_OPTS="$cask_app"       # brew cask install options
 p_brew=/usr/local/bin:/usr/local/sbin       # path: homebrew apps
 p_bin=$cfg/bin                              # path: custom shell scripts
 export PATH="$p_brew:$p_bin:$PATH"          # append to $PATH statement
-scratch() {
-  # purpose: store temporary notes in flat file; bash does not do env array
-  # path to scratch file
-  scratch=$HOME/src/.scratch
-  # create scratch file if not already exists
-  [ -f $scratch ] || touch $scratch
-  scratch_count() {
-    # purpose: count scratch entries
-    sc=$(wc -l < $scratch | tr -d ' ')
-  }
-  case $1 in
-    l|ls|list ) # list scratch item(s)
-      scratch_count
-      echo -e "$yellow\n \bScratch Items: $sc $rs"
-      echo -e "$yellow\n \b$(cat $scratch) $rs"
-      ;;
-    o|open )  # edit scratch file
-      open $scratch
-      ;;
-    rm|remove )  # clear scratch content; overide no clobber setting
-      >| $scratch
-      ;;
-    pp|pop )  # copy last item (minus bullet) to clipboard; remove from list
-      echo -n $(awk 'END{print substr($0, index($0, $2))}' $scratch) | pbcopy
-      echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
-      sed -i '' '$d' $scratch
-      ;;
-    ps|push )  # add item to bottom of list
-      if [ ! -z "$1" ]; then           # do if argument passed
-        echo "- ${*:2}" >> $scratch # append final string to scratch
-      fi
-      ;;
-    sh|shift ) # add scratch item to front of list
-      ;;
-    sp|splice ) # remove scratch item matching argument
-      echo -n $(awk "/$2/ {gsub(\"- \", \"\"); print}" $scratch) | pbcopy
-      echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
-      sed -i '' "/$2/d" $scratch
-      ;;
-    \?|help|man ) # display usage tips
-      echo -e "$yellow\n \busage: s [words]"
-      echo -e "example: $ s this is a note $rs"
-      ;;
-    *)  # if no argument passed, then just refresh count; called @PROMPT_COMMAND
-      scratch_count
-      ;;
-    esac
-}
+
 prompt() {
   # purpose: all prompt related variables & commands
   # run these commands before each PS1 prompt refresh
@@ -265,11 +208,56 @@ usb_clean() {
     {print $3}') $rs"
   fi
 }
-init() {
-  prompt                  # build custom prompt
-  umask 002               # set default perms @dir/files
-  set -o noclobber        # no redirect overwrite; override >|
-  shopt -s histappend     # append history; no clobber
+scratch() {
+  # purpose: store temporary notes in flat file; bash does not do env array
+  # path to scratch file
+  scratch=$HOME/src/.scratch
+  # create scratch file if not already exists
+  [ -f $scratch ] || touch $scratch
+  scratch_count() {
+    # purpose: count scratch entries
+    sc=$(wc -l < $scratch | tr -d ' ')
+  }
+  case $1 in
+    l|ls|list ) # list scratch item(s)
+      scratch_count
+      echo -e "$yellow\n \bScratch Items: $sc $rs"
+      echo -e "$yellow\n \b$(cat $scratch) $rs"
+      ;;
+    o|open )  # edit scratch file
+      open $scratch
+      ;;
+    rm|remove )  # clear scratch content; overide no clobber setting
+      >| $scratch
+      ;;
+    pp|pop )  # copy last item (minus bullet) to clipboard; remove from list
+      echo -n $(awk 'END{print substr($0, index($0, $2))}' $scratch) | pbcopy
+      echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
+      sed -i '' '$d' $scratch
+      ;;
+    ps|push )  # add item to bottom of list
+      if [ ! -z "$1" ]; then           # do if argument passed
+        echo "- ${*:2}" >> $scratch # append final string to scratch
+      fi
+      ;;
+    sh|shift ) # add scratch item to front of list
+      ;;
+    sp|splice ) # remove scratch item matching argument
+      echo -n $(awk "/$2/ {gsub(\"- \", \"\"); print}" $scratch) | pbcopy
+      echo -e "$blue \bCopied to clipboard: $(pbpaste) $rs"
+      sed -i '' "/$2/d" $scratch
+      ;;
+    \?|help|man ) # display usage tips
+      echo -e "$yellow\n \busage: s [words]"
+      echo -e "example: $ s this is a note $rs"
+      ;;
+    *)  # if no argument passed, then just refresh count; called @PROMPT_COMMAND
+      scratch_count
+      ;;
+    esac
 }
 
-init "$@"
+prompt                  # build custom prompt
+umask 002               # set default perms @dir/files
+set -o noclobber        # no redirect overwrite; override >|
+shopt -s histappend     # append history; no clobber

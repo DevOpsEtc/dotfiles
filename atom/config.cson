@@ -67,6 +67,8 @@
       "exception-reporting"
       "atom-beautify"
       "minimap-codeglance"
+      "welcome"
+      "emmet"
     ]
     ignoredNames: [
       "._*"
@@ -127,7 +129,11 @@
     newGistsDefaultToPrivate: true
     openAfterCreate: true
   "git-plus": {}
-  linter: {}
+  linter:
+    displayLinterStatus: false
+    lintOnFlyInterval: 900
+    showErrorPanel: false
+    statusIconPosition: "Right"
   "linter-shellcheck": {}
   minimap:
     plugins:

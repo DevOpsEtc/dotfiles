@@ -1,22 +1,23 @@
-  #######################################################
-  ##  filename: profile.sh                             ##
-  ##  path:     ~/src/config/dotfiles/bash/            ##
-  ##  symlink:  ~/.bash_profile                        ##
-  ##  purpose:  bash shell settings                    ##
-  ##  date:     05/04/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
-  #######################################################
+#######################################################
+##  filename: profile.sh                             ##
+##  path:     ~/src/config/dotfiles/bash/            ##
+##  symlink:  ~/.bash_profile                        ##
+##  purpose:  bash shell settings                    ##
+##  date:     05/11/2016                             ##
+##  repo:     https://github.com/WebAppNut/dotfiles  ##
+#######################################################
 
-  SHELL_SESSION_HISTORY=0
+# disable per-terminal bash sessions
+# not needed if bashrc has shopt -s histappend
+# SHELL_SESSION_HISTORY=0
 
-# assign value of bash dotfiles path
-bash_dots=$HOME/src/config/dotfiles/bash
+src_files=(
+  colors.sh     # source color assignments
+  bashrc.sh     # source shell settings; OSX login shells don't process .bashrc
+  aliases.sh    # source bash command aliases
+  gitprompt.sh  # source bash-git-prompt
+)
 
-# source custom shell settings; OSX login shells don't process the .bashrc
-. $HOME/src/config/dotfiles/bash/bashrc.sh
-
-# source bash command aliases
-. $bash_dots/aliases.sh
-
-# source bash-git-prompt
-. $bash_dots/gitprompt.sh
+for i in "${src_files[@]}"; do
+  . $HOME/src/config/dotfiles/bash/$i  # source file
+done

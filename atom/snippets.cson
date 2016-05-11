@@ -25,7 +25,7 @@
 
 '.plain.text':
   'header':
-    'prefix': 'h'
+    'prefix': 'hc'
     'body': """
       #####################################################
       ##  filename: .txt                                 ##
@@ -41,7 +41,7 @@
       """
 '.source.shell':
   'header':
-    'prefix': 'h'
+    'prefix': 'hc'
     'body': """
       #!/usr/bin/env bash
 
