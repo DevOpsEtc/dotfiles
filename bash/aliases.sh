@@ -8,7 +8,7 @@
 #######################################################
 
 ## ru aliases ############################################################
-alias rup='. osx_ru.sh'                     # check-in for RU repo updates
+alias rup='. $cfg/provision/osx_ru.sh' # check-in for RU repo updates
 alias gbc='cd $trn/ru; ls -ahF'
 alias gbd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
 alias gbe='cd $trn/ru/work/exercises; ls -ahF'
