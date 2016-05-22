@@ -30,59 +30,64 @@ body:
   'cmd-k right':    'unset!'
   'cmd-k left':     'unset!'
   'cmd-k down':     'unset!'
+
   # 'cmd-alt-w':      'window:toggle-invisibles'
   # 'shift-cmd-W':    'editor:toggle-soft-wrap'
-  'cmd-alt-0':      'window:reset-font-size'  # native cmd-0
+  'cmd-alt-0':        'window:reset-font-size'  # native cmd-0
   # 'shift-cmd-C':    'file-icons:toggle-colours'
 
 # navigation
-'atom-workspace atom-text-editor:not(.mini)':
-  'shift-cmd-l':    'go-to-line:toggle' # native: ctrl-g
+'atom-workspace atom-text-editor:not([mini])':
+  'shift-cmd-l':      'go-to-line:toggle' # native: ctrl-g
 
 # editing
 'atom-text-editor:not([mini])':
-  # 'shift-cmd-d':   'unset!'
-  # 'cmd-alt-up':    'editor:duplicate-lines'
-  'alt-w':          'editor:duplicate-lines' # native: shift-cmd-d
-  'alt-z':          'editor:fold-all'        # native: shift-alt-cmd-[
-  'alt-up':         'editor:move-line-up'    # native: ctrl-cmd-up
-  'alt-down':       'editor:move-line-down'  # native: ctrl-cmd-down
-  'alt-t':          'whitespace:convert-spaces-to-tabs'
-  'alt-s':          'whitespace:convert-tabs-to-spaces'
-  'alt-x':          'editor:delete-line'     # native shift-ctrl-k
-  'cmd-shift-u':    'editor:upper-case'
-  'cmd-u':          'editor:lower-case'
+  # 'shift-cmd-d':     'unset!'
+  # 'cmd-alt-up':      'editor:duplicate-lines'
+  'alt-w':            'editor:duplicate-lines' # native: shift-cmd-d
+  'alt-z':            'editor:fold-all'        # native: shift-alt-cmd-[
+  'alt-up':           'editor:move-line-up'    # native: ctrl-cmd-up
+  'alt-down':         'editor:move-line-down'  # native: ctrl-cmd-down
+  'alt-t':            'whitespace:convert-spaces-to-tabs'
+  'alt-s':            'whitespace:convert-tabs-to-spaces'
+  'alt-x':            'editor:delete-line'     # native shift-ctrl-k
+  'cmd-shift-u':      'editor:upper-case'
+  'cmd-u':            'editor:lower-case'
+
+'atom-workspace':
+  'ctrl-2':           'theme-toggler:toggle'
 
 'atom-workspace atom-pane, atom-workspace atom-text-editor:not(.mini)':
-  'ctrl-left':      'window:focus-pane-on-left'
-  'ctrl-down':      'window:focus-pane-below'
-  'ctrl-up':        'window:focus-pane-above'
-  'ctrl-right':     'window:focus-pane-on-right'
-  'ctrl-\\':        'pane:split-right-and-copy-active-item'
-  'ctrl--':         'pane:split-down-and-copy-active-item'
+  'ctrl-left':        'window:focus-pane-on-left'
+  'ctrl-down':        'window:focus-pane-below'
+  'ctrl-up':          'window:focus-pane-above'
+  'ctrl-right':       'window:focus-pane-on-right'
+  'ctrl-\\':          'pane:split-right-and-copy-active-item'
+  'ctrl--':           'pane:split-down-and-copy-active-item'
 
 # maximize-panes overwrites default keybinding for newline above; restore it
 '.platform-darwin atom-workspace atom-text-editor:not([mini])':
   'shift-cmd-enter':  'editor:newline-above'
   'alt-cmd-m':        'maximize-panes:maximize'
+  'alt-l':            'linter:toggle'
 
+# terminal-plus
 '.platform-darwin atom-workspace':
-  # 'shift-cmd-T': 'platformio-ide-terminal:new'
-  'ctrl-n':         'platformio-ide-terminal:new'
-  'shift-cmd-J':    'platformio-ide-terminal:prev'
-  'shift-cmd-K':    'platformio-ide-terminal:next'
-  'shift-cmd-X':    'platformio-ide-terminal:close'
-  'ctrl-enter':     'platformio-ide-terminal:insert-selected-text'
-  'ctrl-`':         'platformio-ide-terminal:toggle'
-  'alt-l':          'linter:toggle'
+  'cmd-alt-n':        'platformio-ide-terminal:new'
+  'cmd-shift-a':      'platformio-ide-terminal:prev'
+  'cmd-shift-e':      'platformio-ide-terminal:next'
+  'cmd-shift-x':      'platformio-ide-terminal:close'
+  'ctrl-enter':       'platformio-ide-terminal:insert-selected-text'
+  'ctrl-`':           'platformio-ide-terminal:toggle'
+  'cmd-alt-x':        'platformio-ide-terminal:close-all'
 
 '.platform-darwin .platformio-ide-terminal .terminal':
-  'cmd-c':          'platformio-ide-terminal:copy'
-  'cmd-v':          'platformio-ide-terminal:paste'
-  # 'ctrl-n': 'platformio-ide-terminal:new'
+  'cmd-c':            'platformio-ide-terminal:copy'
+  'cmd-v':            'platformio-ide-terminal:paste'
+  'ctrl-1':           'platformio-ide-terminal:fullscreen'
 
 'atom-workspace, .command-palette atom-text-editor':
-  'cmd-p':          'command-palette:toggle'
+  'cmd-p':            'command-palette:toggle'
 
 # 'atom-workspace atom-text-editor:not(.mini)':
   # 'ctrl-;': 'editor:delete-to-end-of-line'

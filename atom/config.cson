@@ -109,6 +109,7 @@
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: [
       "platformio-ide-terminal"
+      "theme-toggler"
     ]
     projectHome: "/Users/gp/src"
   editor:
@@ -116,7 +117,6 @@
     fontSize: 16
     invisibles: {}
     scrollPastEnd: true
-    showInvisibles: true
     tabType: "soft"
   "export-html":
     lineNumber:
@@ -134,6 +134,7 @@
     lintOnFlyInterval: 900
     showErrorPanel: false
     statusIconPosition: "Right"
+  "linter-jshint": {}
   "linter-shellcheck": {}
   minimap:
     plugins:
@@ -142,6 +143,17 @@
       "minimap-autohide": true
       "minimap-autohideDecorationsZIndex": 0
   "one-dark-ui": {}
+  "open-in-browsers":
+    BrowserPlus: false
+    Firefox: false
+    IE: false
+    Opera: false
+    browsers: [
+      "Chrome"
+      "ChromePortable"
+      "Safari"
+      "SafariPortable"
+    ]
   "open-recent": {}
   "platformio-ide-terminal":
     core:
@@ -156,6 +168,24 @@
   "status-bar": {}
   tabs:
     enableVcsColoring: true
+  "theme-toggler":
+    darkSyntaxTheme: "one-dark-syntax"
+    darkUiTheme: "one-dark-ui"
+    lightSyntaxTheme: "one-light-syntax"
+    lightUiTheme: "one-light-ui"
+  "todo-show":
+    findTheseTodos: [
+      "q-"
+      "t-"
+      "c-"
+      "f-"
+      "n-"
+    ]
+    showInTable: [
+      "Text"
+      "Type"
+    ]
+    sortBy: "Type"
   "tree-view":
     hideIgnoredNames: true
     squashDirectoryNames: true

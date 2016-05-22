@@ -1,31 +1,26 @@
-  #######################################################
-  ##  filename: bashrc.sh                              ##
-  ##  path:     ~/src/config/dotfiles/bash/            ##
-  ##  purpose:  bash shell configuration               ##
-  ##  date:     05/11/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
-  #######################################################
+#######################################################
+##  filename: bashrc.sh                              ##
+##  path:     ~/src/config/dotfiles/bash/            ##
+##  purpose:  bash shell configuration               ##
+##  date:     05/21/2016                             ##
+##  note:     sourced via bash_profile               ##
+##  repo:     https://github.com/WebAppNut/dotfiles  ##
+#######################################################
 
 src=$HOME/src                               # path to src folder
+trn=$src/training                           # path to training folder
 cfg=$src/config                             # path to config folder
 
 export EDITOR="atom -nw"                    # use atom as default text editor
 export GIT_EDITOR=$EDITOR                   # use vim in as default git editor
 export GREP_OPTIONS='--color=auto'          # always colorize grep matches
-export HISTFILE=$src/.bash_history         # command history filepath
+export HISTFILE=$src/.bash_history          # command history filepath
 export HISTFILESIZE=5000                    # max commands stored in history
 export HISTSIZE=5000                        # max commands to save in a session
 export HISTTIMEFORMAT='%D %T '              # prefix timestamp on history list
 export HISTCONTROL=ignoreboth:erasedups     # ignore leading space & kill dups
 export HISTIGNORE="?:??:htop:vim:atom"      # ignore commands; 1 & 2 character
 export VISUAL=$EDITOR                       # use atom in visudo & crontab
-# p_ply=$HOME/work/provision/playbook         # path: ansible assets
-# p_inv=$p_ply/inventory                      # path: ansible inventory
-# p_pbk=$p_ply/playbook.yml                   # path: ansible main playbook
-# p_vl=$p_ply/vars/vault_local.yml            # path: ansible vault_local.yml
-# p_vs=$p_ply/vars/vault_server.yml           # path: ansible vault_server.yml
-# c_ap="ansible-playbook -i $p_inv $p_pbk"    # command: playbook & options
-# c_ap2=--ask-vault-pass                      # command: playbook vault option
 export NVM_DIR="$HOME/.nvm"                 # nvm working directory
 export NVM_SCR="$NVM_DIR/nvm.sh"            # nvm script path
 [ -s "$NVM_SCR" ] && . "$NVM_SCR"           # source nvm script
@@ -261,3 +256,11 @@ prompt                  # build custom prompt
 umask 002               # set default perms @dir/files
 set -o noclobber        # no redirect overwrite; override >|
 shopt -s histappend     # append history; no clobber
+
+# p_ply=$HOME/work/provision/playbook         # path: ansible assets
+# p_inv=$p_ply/inventory                      # path: ansible inventory
+# p_pbk=$p_ply/playbook.yml                   # path: ansible main playbook
+# p_vl=$p_ply/vars/vault_local.yml            # path: ansible vault_local.yml
+# p_vs=$p_ply/vars/vault_server.yml           # path: ansible vault_server.yml
+# c_ap="ansible-playbook -i $p_inv $p_pbk"    # command: playbook & options
+# c_ap2=--ask-vault-pass                      # command: playbook vault option

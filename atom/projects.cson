@@ -16,6 +16,12 @@ provision:
     "/Users/gp/src/config/provision"
     "/Users/gp/src"
   ]
+ru:
+  title: "RU"
+  paths: [
+    "/Users/gp/src/training/ru"
+    "/Users/gp/src"
+  ]
 training:
   title: "Training"
   paths: [

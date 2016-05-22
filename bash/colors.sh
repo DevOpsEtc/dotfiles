@@ -9,16 +9,16 @@
 ##########################################################
 
 # assign color values
-rs=$(tput sgr0)                       # text: reset attributes
-blue=$(tput setaf 33)                 # text: blue
-gray=$(tput setaf 250)                # text: gray
-green=$(tput setaf 64)                # text: green
-greenb=$(tput bold)$(tput setaf 64)   # text: green & bold
-red=$(tput setaf 160)                 # text: red
-redb=$(tput bold)$(tput setaf 160)    # text: red & bold
-yellow=$(tput setaf 136)              # text: yellow
-yellowb=$(tput bold)$(tput setaf 136) # text: yellow & bold
-white=$(tput setaf 7)                 # text: white
+export rs=$(tput sgr0)                       # text: reset attributes
+export blue=$(tput setaf 33)                 # text: blue
+export gray=$(tput setaf 250)                # text: gray
+export green=$(tput setaf 64)                # text: green
+export greenb=$(tput bold)$(tput setaf 64)   # text: green & bold
+export red=$(tput setaf 160)                 # text: red
+export redb=$(tput bold)$(tput setaf 160)    # text: red & bold
+export yellow=$(tput setaf 136)              # text: yellow
+export yellowb=$(tput bold)$(tput setaf 136) # text: yellow & bold
+export white=$(tput setaf 7)                 # text: white
 
 show_colors() {
   # display foreground & background colors

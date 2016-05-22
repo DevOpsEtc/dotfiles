@@ -1,20 +1,30 @@
-  #######################################################
-  ##  filename: aliases.sh                             ##
-  ##  path:     ~/src/config/dotfiles/bash/            ##
-  ##  purpose:  bash command aliases                   ##
-  ##  date:     05/11/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
-  #######################################################
+#######################################################
+##  filename: aliases.sh                             ##
+##  path:     ~/src/config/dotfiles/bash/            ##
+##  purpose:  bash command aliases                   ##
+##  date:     05/21/2016                             ##
+##  note:     sourced via bash_profile               ##
+##  repo:     https://github.com/WebAppNut/dotfiles  ##
+#######################################################
 
-# goto folder aliases
+## ru aliases ############################################################
+alias rup='. osx_ru.sh'                     # check-in for RU repo updates
+alias gbc='cd $trn/ru; ls -ahF'
+alias gbd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
+alias gbe='cd $trn/ru/work/exercises; ls -ahF'
+alias gbp='cd $trn/ru/work/projects; ls -ahF'
+alias gbes='cd $trn/ru/_private/ru_repos/exercise-starters; ls -ahF'
+alias gbec='cd $trn/ru/_private/ru_repos/exercise-solutions; ls -ahF'
+
+## goto folder aliases ###################################################
 alias gsrc='cd $src; ls -ahF'
 alias gcht='cd $src/cheats; ls -ahF'
 alias gtrn='cd $src/training; ls -ahF'
-alias gboo='cd $src/training/bootcamp; ls -ahF'    
 alias gpro='cd $cfg/provision; ls -ahF'
 alias gbin='cd $cfg/bin; ls -ahF'
 alias gdot='cd $cfg/dotfiles; ls -ahF'
 
+## misc aliases ##########################################################
 alias ..='cd ..'                            # cd up 1 level
 alias ..2='cd ../..'                        # cd up 2 levels
 alias ..3='cd ../../..'                     # cd up 3 levels
@@ -63,15 +73,13 @@ alias R='. $HOME/.bash_profile'             # source .bash_profile
 alias rm='rm -iv'                           # remove; confirm; verbose
 alias s='scratch'                           # create temporary note; hud in ps1
 alias ver='sw_vers'                         # check osx version
-alias tag='cd ~/src && ctags -R -f .tags'   # generate ctag file
-alias tagx='atom $src/.tags'                # edit .tags file
-alias w1='tmux_workspace.sh'                # attach to session; create if none
-alias w1d='tmux detach'                     # detach tmux session
-alias w1k='killall tmux'                    # kill tmux session
+alias tag='cd ~/src && ctags -R -f .tags'   # generate ctag file with symbols
+alias tage='atom -nw $src/.tags'            # edit .tags file
 alias which='which -a'                      # find executable [app] instances
 alias wk='work.sh'                          # invoke bettersnaptool snap script
 
-# disabled aliases
+# disabled aliases for tools and projects no longer use
+## ansible aliases #######################################################
 # alias avl='ansible-vault edit $p_vl'        # decrypt & edit vault_local.yml
 # alias avs='ansible-vault edit $p_vs'        # decrypt & edit vault_server.yml
 # alias ave='ansible-vault encrypt'           # add file encryption [path/file]
@@ -87,6 +95,61 @@ alias wk='work.sh'                          # invoke bettersnaptool snap script
 # alias aas='ansible -i $p_inv stage -a'      # run adhoc command: stage [command]
 # alias aap='ansible -i $p_inv prod -a'       # run adhoc command: prod [command]
 # alias aaP='ansible -i $p_inv all -m ping'   # run adhoc ping: all
+
+## docker aliases ########################################################
+# alias d='docker'                           # docker binary
+# alias dx='docker exec -it'                 # run command on container [name]
+# alias dl='docker logs'                     # list container log [name] [-f]
+# alias dps='docker ps'                      # list containers (running)
+# alias dpsa='docker ps -a | grep Exited'    # list containers (exited)
+# alias dpsq='docker ps -q' 				         # list container IDs (running)
+# alias dpsaq='docker ps -aq'                # list container IDs (all)
+# alias drel='docker_releases.sh'            # download latest docker releases
+# alias dst='docker stats $(docker ps -q)'   # container memory/cpu usage
+# alias dip='docker_get_ip'                  # list container IP [name]
+# alias dgo='docker_go_container'            # open container cli
+# alias din='docker inspect'                 # list container/image info [name]
+# alias dim='docker images'                  # list images
+# alias drmi='docker_rm_image'               # delete image [name]
+# alias drmia='docker rmi $(docker images -q)' # delete all images
+# alias drmc='docker kill $(docker ps -aq) && docker rm $(docker ps -aq)'
+# alias dnuke='docker_rm_atomic'             # stop/delete all containers/images
+
+## docker-compose aliases ################################################
+# alias dc='docker-compose'                  # docker-compose binary
+# alias dcup='docker-compose up -d'          # build services & run containers
+# alias dcb='docker-compose build'		       # (re)build service image [Name]
+# alias dcr='docker-compose restart'	       # restart all containers
+# alias dcon='docker-compose start'	         # start container(s) [Name]
+# alias dcof='docker-compose stop'	         # start all containers
+# alias dcps='docker-compose ps'	           # list docker-compose services
+# alias dcl='docker-compose logs'            # list service logs w/ tail -f
+
+## docker-machine aliases ################################################
+# alias dm='docker-machine'                  # docker-machine binary
+# alias dma='docker-machine active'          # list machines (active)
+# alias dmas='machine_set_active'            # set active machine; opt [mach_name]
+# alias dmgo='machine_go'                    # ssh into machine; opt [mach_name]
+# alias dmip='machine_get_ip'                # get machine ip; opt [mach_name]
+# alias dmls='docker-machine ls'			       # list machines (all)
+# alias dmrm='docker-machine rm'             # remove machine; opt [mach_name]
+# alias dmr='machine_restart'                # restart machine; opt [mach_name]
+# alias dmon='machine_start'                 # restart machine; opt [mach_name]
+# alias dmof='machine_stop'                  # restart machine; opt [mach_name]
+
+## drush aliases #########################################################
+# alias dxd='docker exec -it tool drush'     # run drush on waf.dev
+# alias dxd-c='dxd cache-rebuild'            # clear all drupal 8 caches
+# # open one-time login link for specified user; uid 1=default
+# alias dxd-l="dxd user-login | pbcopy && open $(pbpaste)"
+# alias dxd-m='drupal_maintenance && dxd-c'  # toggle maintenance mode on/off
+
+## tumx aliases ##########################################################
+# alias w1='tmux_workspace.sh'                # attach to session; create if none
+# alias w1d='tmux detach'                     # detach tmux session
+# alias w1k='killall tmux'                    # kill tmux session
+
+## vagrant aliases #######################################################
 # silence & push to bg; ssh to vm
 # alias vuwaf='gwaf && vagrant rsync-back > /dev/null && vagrant rsync-auto > /dev/null & ssh waf && fg'
 # rsync host to guest
@@ -101,3 +164,5 @@ alias wk='work.sh'                          # invoke bettersnaptool snap script
 # alias vkil='vagrant destroy'                # "
 # alias vsus='vagrant suspend'                # "
 # alias vres='vagrant resume'                 # "
+# alias vbls='VBoxManage list runningvms'     # list names of running VBox boxes
+# alias vbup='vbox_start'                     # manually start vbox

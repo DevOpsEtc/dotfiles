@@ -23,6 +23,26 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
+# HTML: .text.html.basic
+# CSS: .source.css
+# SASS: .source.sass
+# JavaScript: .source.js
+# JSON: .source.json
+# PHP: .text.html.php
+# Java: .source.java
+# Ruby: .text.html.erb
+# Python: .source.python
+# plain text (including markdown): .text.plain
+
+'.text.html.basic':
+  'div':
+    'prefix': 'div'
+    'body': """
+      <div>
+      
+      </div>
+      """
+
 '.plain.text':
   'header':
     'prefix': 'hc'
@@ -39,6 +59,15 @@
       ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
 
       """
+
+  'heading':
+    'prefix': 'hd'
+    'body': """
+      ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+      heading
+      ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+      """
+
 '.source.shell':
   'header':
     'prefix': 'hc'
