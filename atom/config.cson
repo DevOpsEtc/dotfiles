@@ -60,14 +60,13 @@
   autosave:
     enabled: true
   core:
-    audioBeep: false
-    automaticallyUpdate: false
     disabledPackages: [
+      "vim-mode-plus"
+      "pigments"
+      "symbols-tree-view"
+      "atom-ctags"
       "metrics"
       "exception-reporting"
-      "atom-beautify"
-      "minimap-codeglance"
-      "welcome"
       "emmet"
     ]
     ignoredNames: [
@@ -106,10 +105,8 @@
       "*.xlsx"
       "*.zip"
     ]
-    openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: [
       "platformio-ide-terminal"
-      "theme-toggler"
     ]
     projectHome: "/Users/gp/src"
   editor:
@@ -117,7 +114,6 @@
     fontSize: 16
     invisibles: {}
     scrollPastEnd: true
-    tabType: "soft"
   "export-html":
     lineNumber:
       use: false
@@ -125,17 +121,7 @@
     style: "grayscale.css"
   "find-and-replace": {}
   "fuzzy-finder": {}
-  "gist-it":
-    newGistsDefaultToPrivate: true
-    openAfterCreate: true
   "git-plus": {}
-  linter:
-    displayLinterStatus: false
-    lintOnFlyInterval: 900
-    showErrorPanel: false
-    statusIconPosition: "Right"
-  "linter-jshint": {}
-  "linter-shellcheck": {}
   minimap:
     plugins:
       codeglance: true
@@ -143,18 +129,8 @@
       "minimap-autohide": true
       "minimap-autohideDecorationsZIndex": 0
   "one-dark-ui": {}
-  "open-in-browsers":
-    BrowserPlus: false
-    Firefox: false
-    IE: false
-    Opera: false
-    browsers: [
-      "Chrome"
-      "ChromePortable"
-      "Safari"
-      "SafariPortable"
-    ]
   "open-recent": {}
+  pigments: {}
   "platformio-ide-terminal":
     core:
       mapTerminalsTo: "Folder"
@@ -166,42 +142,16 @@
       fontSize: "16"
   "spell-check": {}
   "status-bar": {}
-  tabs:
-    enableVcsColoring: true
-  "theme-toggler":
-    darkSyntaxTheme: "one-dark-syntax"
-    darkUiTheme: "one-dark-ui"
-    lightSyntaxTheme: "one-light-syntax"
-    lightUiTheme: "one-light-ui"
-  "todo-show":
-    findTheseTodos: [
-      "q-"
-      "t-"
-      "c-"
-      "f-"
-      "n-"
-    ]
-    showInTable: [
-      "Text"
-      "Type"
-    ]
-    sortBy: "Type"
+  tabs: {}
   "tree-view":
     hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
-".diff.source":
-  editor:
-    showIndentGuide: true
-".gfm.source":
-  "wrap-guide":
-    enabled: false
 ".js.source":
   editor:
     showIndentGuide: true
 ".plain.text":
   editor:
     softWrap: true
-  "wrap-guide":
-    enabled: false
