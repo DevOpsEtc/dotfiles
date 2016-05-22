@@ -2,7 +2,7 @@
 ##  filename: aliases.sh                             ##
 ##  path:     ~/src/config/dotfiles/bash/            ##
 ##  purpose:  bash command aliases                   ##
-##  date:     05/21/2016                             ##
+##  date:     05/22/2016                             ##
 ##  note:     sourced via bash_profile               ##
 ##  repo:     https://github.com/WebAppNut/dotfiles  ##
 #######################################################
