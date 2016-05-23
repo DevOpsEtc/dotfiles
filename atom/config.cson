@@ -60,11 +60,8 @@
   autosave:
     enabled: true
   core:
+    audioBeep: false
     disabledPackages: [
-      "vim-mode-plus"
-      "pigments"
-      "symbols-tree-view"
-      "atom-ctags"
       "metrics"
       "exception-reporting"
       "emmet"
@@ -107,6 +104,9 @@
     ]
     packagesWithKeymapsDisabled: [
       "platformio-ide-terminal"
+      "theme-toggler"
+      "whitespace"
+      "symbols-view"
     ]
     projectHome: "/Users/gp/src"
   editor:
@@ -122,6 +122,12 @@
   "find-and-replace": {}
   "fuzzy-finder": {}
   "git-plus": {}
+  linter:
+    displayLinterStatus: false
+    showErrorTabFile: false
+    showErrorTabProject: false
+    statusIconPosition: "Right"
+    statusIconScope: "File"
   minimap:
     plugins:
       codeglance: true
@@ -143,6 +149,19 @@
   "spell-check": {}
   "status-bar": {}
   tabs: {}
+  "theme-toggler":
+    darkSyntaxTheme: "one-dark-syntax"
+    darkUiTheme: "one-dark-ui"
+    lightSyntaxTheme: "one-light-syntax"
+    lightUiTheme: "one-light-ui"
+  "todo-show":
+    ignoreThesePaths: [
+      "**/node_modules/"
+      "**/vendor/"
+      "**/bower_components/"
+      "**/.git"
+      "**/_private"
+    ]
   "tree-view":
     hideIgnoredNames: true
     hideVcsIgnoredFiles: true

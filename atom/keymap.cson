@@ -24,38 +24,40 @@
 # https://github.com/jasonrudolph/dotfiles/blob/master/atom/keymap.cson
 
 # display
-body:
-  'cmd-0':          'window:toggle-invisibles'
+# body:
+
+
+  # 'cmd-alt-w':      'window:toggle-invisibles'
+  # 'shift-cmd-W':    'editor:toggle-soft-wrap'
+  # 'shift-cmd-C':    'file-icons:toggle-colours'
+
+# navigation
+# 'atom-workspace atom-text-editor:not([mini])':
+
+'atom-workspace':
+  'ctrl-2':         'theme-toggler:toggle'
   'cmd-k up':       'unset!'
   'cmd-k right':    'unset!'
   'cmd-k left':     'unset!'
   'cmd-k down':     'unset!'
-
-  # 'cmd-alt-w':      'window:toggle-invisibles'
-  # 'shift-cmd-W':    'editor:toggle-soft-wrap'
-  'cmd-alt-0':        'window:reset-font-size'  # native cmd-0
-  # 'shift-cmd-C':    'file-icons:toggle-colours'
-
-# navigation
-'atom-workspace atom-text-editor:not([mini])':
-  'shift-cmd-l':      'go-to-line:toggle' # native: ctrl-g
+  'alt-cmd-up':     'unset!'
+  'alt-cmd-down':   'unset!'
 
 # editing
 'atom-text-editor:not([mini])':
-  # 'shift-cmd-d':     'unset!'
-  # 'cmd-alt-up':      'editor:duplicate-lines'
-  'alt-w':            'editor:duplicate-lines' # native: shift-cmd-d
-  'alt-z':            'editor:fold-all'        # native: shift-alt-cmd-[
-  'alt-up':           'editor:move-line-up'    # native: ctrl-cmd-up
-  'alt-down':         'editor:move-line-down'  # native: ctrl-cmd-down
+  'shift-cmd-l':      'go-to-line:toggle'       # native: ctrl-g
+  'cmd-0':            'window:toggle-invisibles'
+  'cmd-alt-0':        'window:reset-font-size'  # native cmd-0
+  'alt-w':            'editor:duplicate-lines'  # native: shift-cmd-d
+  'alt-z':            'editor:fold-all'         # native: shift-alt-cmd-[
+  'alt-up':           'editor:move-line-up'     # native: ctrl-cmd-up
+  'alt-down':         'editor:move-line-down'   # native: ctrl-cmd-down
   'alt-t':            'whitespace:convert-spaces-to-tabs'
   'alt-s':            'whitespace:convert-tabs-to-spaces'
   'alt-x':            'editor:delete-line'     # native shift-ctrl-k
   'cmd-shift-u':      'editor:upper-case'
   'cmd-u':            'editor:lower-case'
 
-'atom-workspace':
-  'ctrl-2':           'theme-toggler:toggle'
 
 'atom-workspace atom-pane, atom-workspace atom-text-editor:not(.mini)':
   'ctrl-left':        'window:focus-pane-on-left'
@@ -70,6 +72,16 @@ body:
   'shift-cmd-enter':  'editor:newline-above'
   'alt-cmd-m':        'maximize-panes:maximize'
   'alt-l':            'linter:toggle'
+
+# symbols-view
+'.platform-darwin atom-text-editor':
+  'cmd-r':            'symbols-view:toggle-file-symbols'
+  'alt-cmd-up':       'symbols-view:go-to-declaration'
+  'alt-cmd-down':     'symbols-view:return-from-declaration'
+
+'.platform-darwin':
+  'shift-cmd-R':      'symbols-view:toggle-project-symbols'
+
 
 # terminal-plus
 '.platform-darwin atom-workspace':

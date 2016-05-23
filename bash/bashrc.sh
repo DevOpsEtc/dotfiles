@@ -251,6 +251,19 @@ scratch() {
       ;;
     esac
 }
+tags() {
+  # purpose: # generate ctags file filled with symbols from all ~/src/* projects
+  case $1 in
+    e|ed) atom $src/.tags;;  # edit
+    l|ls) cat $src/.tags;;   # list
+    r|rm) rm -f $src/.tags;; # remove
+       *)
+       init_pwd="$(pwd)"     # store pwd
+       cd $src
+       ctags -R --exclude=.git --exclude=_private -f .tags # generate
+       cd $init_pwd;;        # goto initial pwd
+  esac
+}
 
 prompt                  # build custom prompt
 umask 002               # set default perms @dir/files

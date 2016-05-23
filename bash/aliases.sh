@@ -73,8 +73,6 @@ alias R='. $HOME/.bash_profile'             # source .bash_profile
 alias rm='rm -iv'                           # remove; confirm; verbose
 alias s='scratch'                           # create temporary note; hud in ps1
 alias ver='sw_vers'                         # check osx version
-alias tag='cd ~/src && ctags -R -f .tags'   # generate ctag file with symbols
-alias tage='atom -nw $src/.tags'            # edit .tags file
 alias which='which -a'                      # find executable [app] instances
 alias wk='work.sh'                          # invoke bettersnaptool snap script
 

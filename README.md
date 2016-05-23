@@ -13,6 +13,5 @@
 -   Finish commenting gitconfig
 -   Add tutorial with screenshots for repo cloning, forking, integrating & customizing
 -   Cleanup new vimrc w/ minimal settings and no plugins
--   Clean up atom keymap
 
 **Feel free to fork, but YMMV!**
