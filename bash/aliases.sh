@@ -8,7 +8,8 @@
 #######################################################
 
 ## ru aliases ############################################################
-alias rup='. $cfg/provision/osx_ru.sh' # check-in for RU repo updates
+alias rgpl='. $cfg/provision/osx_ru.sh' # check-in for RU repo updates
+alias rcal='open http://bit.ly/1YSKuCW'
 alias gbc='cd $trn/ru; ls -ahF'
 alias gbd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
 alias gbe='cd $trn/ru/work/exercises; ls -ahF'

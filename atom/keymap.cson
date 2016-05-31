@@ -26,7 +26,6 @@
 # display
 # body:
 
-
   # 'cmd-alt-w':      'window:toggle-invisibles'
   # 'shift-cmd-W':    'editor:toggle-soft-wrap'
   # 'shift-cmd-C':    'file-icons:toggle-colours'
@@ -58,7 +57,6 @@
   'cmd-shift-u':      'editor:upper-case'
   'cmd-u':            'editor:lower-case'
 
-
 'atom-workspace atom-pane, atom-workspace atom-text-editor:not(.mini)':
   'ctrl-left':        'window:focus-pane-on-left'
   'ctrl-down':        'window:focus-pane-below'
@@ -82,7 +80,6 @@
 '.platform-darwin':
   'shift-cmd-R':      'symbols-view:toggle-project-symbols'
 
-
 # terminal-plus
 '.platform-darwin atom-workspace':
   'cmd-alt-n':        'platformio-ide-terminal:new'
@@ -92,6 +89,7 @@
   'ctrl-enter':       'platformio-ide-terminal:insert-selected-text'
   'ctrl-`':           'platformio-ide-terminal:toggle'
   'cmd-alt-x':        'platformio-ide-terminal:close-all'
+  'cmd-alt-r':        'platformio-ide-terminal:rename'
 
 '.platform-darwin .platformio-ide-terminal .terminal':
   'cmd-c':            'platformio-ide-terminal:copy'
@@ -100,6 +98,10 @@
 
 'atom-workspace, .command-palette atom-text-editor':
   'cmd-p':            'command-palette:toggle'
+
+# emmet
+'atom-text-editor[data-grammar="text html angular"]:not([mini])':
+  'tab':              'emmet:expand-abbreviation-with-tab'
 
 # 'atom-workspace atom-text-editor:not(.mini)':
   # 'ctrl-;': 'editor:delete-to-end-of-line'

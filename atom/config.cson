@@ -61,6 +61,7 @@
     enabled: true
   core:
     audioBeep: false
+    automaticallyUpdate: false
     disabledPackages: [
       "metrics"
       "exception-reporting"
@@ -159,12 +160,11 @@
       "**/node_modules/"
       "**/vendor/"
       "**/bower_components/"
-      "**/.git"
-      "**/_private"
+      "**/.git/"
+      "**/_private/"
     ]
   "tree-view":
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false

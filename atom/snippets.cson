@@ -34,14 +34,24 @@
 # Python: .source.python
 # plain text (including markdown): .text.plain
 
-'.text.html.basic':
-  'div':
-    'prefix': 'div'
-    'body': """
-      <div>
-      
-      </div>
-      """
+".text.html:not(.meta.tag)":
+  "script all":
+    "prefix": "source all"
+    "body": """
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"</script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"</script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+          <meta charset="utf-8">
+          <title></title>
+        </head>
+        <body>
+
+        </body>
+      </html>
+    """
 
 '.plain.text':
   'header':
@@ -87,3 +97,28 @@
 
 
       """
+
+# angularjs
+".source.js, .source.js-semantic":
+  "module new":
+    "prefix": "ngm"
+    "body": """
+    // create new module
+    angular.module('$1', [$2])$3
+    """
+  "module retrieve":
+    "prefix": "ngmr"
+    "body": """
+    // retrieve existing module
+    angular.module('$1', [$2])$3
+    """
+  "module as variable":
+    "prefix": "ngma"
+    "body": "var $1 = angular.module('$2', [$3])$4"
+  "module with config":
+    "prefix": "ngmc"
+    "body": """
+      var $1 = angular.module('$2', [$3], function($4) {
+          $5
+      })$6
+    """
