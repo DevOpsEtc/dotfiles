@@ -2,20 +2,23 @@
 ##  filename: aliases.sh                             ##
 ##  path:     ~/src/config/dotfiles/bash/            ##
 ##  purpose:  bash command aliases                   ##
-##  date:     05/22/2016                             ##
+##  date:     06/03/2016                             ##
 ##  note:     sourced via bash_profile               ##
 ##  repo:     https://github.com/WebAppNut/dotfiles  ##
 #######################################################
 
 ## ru aliases ############################################################
-alias rgpl='. $cfg/provision/osx_ru.sh' # check-in for RU repo updates
-alias rcal='open http://bit.ly/1YSKuCW'
-alias gbc='cd $trn/ru; ls -ahF'
-alias gbd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
-alias gbe='cd $trn/ru/work/exercises; ls -ahF'
-alias gbp='cd $trn/ru/work/projects; ls -ahF'
-alias gbes='cd $trn/ru/_private/ru_repos/exercise-starters; ls -ahF'
-alias gbec='cd $trn/ru/_private/ru_repos/exercise-solutions; ls -ahF'
+alias rgpl='ru.sh'                             # git pull ru repos
+alias gr='cd $trn/ru; ls -ahF'                 # goto ru folder
+alias gra='cd $trn/ru/apps; ls -ahF'           # goto apps folder
+alias gre='cd $trn/ru/repo/exercises; ls -ahF' # goto exercises
+alias grp='cd $trn/ru/repo/projects; ls -ahF'  # goto projects
+alias grd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
+alias gres='cd $trn/ru/_private/ru_repos/exercise-starters; ls -ahF'
+alias napp='webapp.sh'                         # create new app scaffolding
+alias http='http-server'                       # fire up webserver
+alias orc='$(open -a "Google Chrome.app" 'http://bit.ly/1YSKuCW') ' # open cal
+alias oapp='$(open -a "Google Chrome.app" 'http://localhost:8080')' # open app
 
 ## goto folder aliases ###################################################
 alias gsrc='cd $src; ls -ahF'

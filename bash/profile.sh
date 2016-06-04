@@ -3,7 +3,7 @@
 ##  path:     ~/src/config/dotfiles/bash/            ##
 ##  symlink:  ~/.bash_profile                        ##
 ##  purpose:  bash shell settings                    ##
-##  date:     05/11/2016                             ##
+##  date:     06/04/2016                             ##
 ##  repo:     https://github.com/WebAppNut/dotfiles  ##
 #######################################################
 
@@ -12,9 +12,9 @@
 # SHELL_SESSION_HISTORY=0
 
 src_files=(
-  colors.sh     # source color assignments
-  bashrc.sh     # source shell settings; OSX login shells don't process .bashrc
   aliases.sh    # source bash command aliases
+  functions.sh  # source bash functions
+  bashrc.sh     # source shell settings; OSX login shells don't process .bashrc
   gitprompt.sh  # source bash-git-prompt
 )
 
