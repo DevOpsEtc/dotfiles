@@ -2,15 +2,17 @@
 ##  filename: bashrc.sh                                              ##
 ##  path:     ~/src/config/dotfiles/bash/                            ##
 ##  purpose:  bash shell configuration                               ##
-##  date:     06/04/2016                                             ##
+##  date:     05/09/2017                                             ##
 ##  note:     sourced via bash_profile                               ##
-##  repo:     https://github.com/WebAppNut/dotfiles                  ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles                  ##
 #######################################################################
 
 ## Paths ##############################################################
 src=$HOME/src                               # path to src folder
 trn=$src/training                           # path to training folder
 cfg=$src/config                             # path to config folder
+dep=$src/deploy                             # path to deploy folder
+site=$src/devopsetc.com/hugo                # path to website folder
 # p_ply=$HOME/work/provision/playbook         # path: ansible assets
 # p_inv=$p_ply/inventory                      # path: ansible inventory
 # p_pbk=$p_ply/playbook.yml                   # path: ansible main playbook
@@ -20,16 +22,16 @@ cfg=$src/config                             # path to config folder
 # c_ap2=--ask-vault-pass                      # command: playbook vault option
 
 ## Colors (scripts & prompt) ##########################################
-export rs=$(tput sgr0)                       # text: reset attributes
-export blue=$(tput setaf 33)                 # text: blue
-export gray=$(tput setaf 250)                # text: gray
-export green=$(tput setaf 64)                # text: green
-export greenb=$(tput bold)$(tput setaf 64)   # text: green & bold
-export red=$(tput setaf 160)                 # text: red
-export redb=$(tput bold)$(tput setaf 160)    # text: red & bold
-export yellow=$(tput setaf 136)              # text: yellow
-export yellowb=$(tput bold)$(tput setaf 136) # text: yellow & bold
-export white=$(tput setaf 7)                 # text: white
+export rs=$(tput sgr0)                        # text: reset attributes
+export blue=$(tput setaf 33)                  # text: blue
+export gray=$(tput setaf 250)                 # text: gray
+export green=$(tput setaf 64)                 # text: green
+export greenb=$(tput bold && tput setaf 64)   # text: green & bold
+export red=$(tput setaf 160)                  # text: red
+export redb=$(tput bold && tput setaf 160)    # text: red & bold
+export yellow=$(tput setaf 136)               # text: yellow
+export yellowb=$(tput bold && tput setaf 136) # text: yellow & bold
+export white=$(tput setaf 7)                  # text: white
 
 ## Editor #############################################################
 export EDITOR="atom -nw"                    # use atom as default text editor
@@ -93,6 +95,6 @@ prompt() {
 
 ## Misc (keep ordered at bottom) ######################################
 prompt                  # build custom prompt
-umask 002               # set default perms @dir/files
+# umask 002               # set default perms @dir/files
 set -o noclobber        # no redirect overwrite; override >|
 shopt -s histappend     # append history; no clobber

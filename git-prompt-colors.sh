@@ -6,7 +6,7 @@
   ##  symlink:  ~/                                     ##
   ##  purpose:  bash-git-prompt theme template         ##
   ##  date:     12/04/2015                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
   #######################################################
 
 # notes:

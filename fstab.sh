@@ -4,7 +4,7 @@
 ##  symlink:  /etc/fstab                                              ##
 ##  purpose:  file systems table                                      ##
 ##  date:     04/07/2015                                              ##
-##  repo:     https://github.com/WebAppNut/dotfiles                   ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles                   ##
 ##  notes:    diskutil info "/Volumes/backup-rm" | grep 'Volume UUID' ##
 ########################################################################
 

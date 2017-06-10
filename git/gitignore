@@ -3,13 +3,14 @@
 ##  filename: .gitignore                             ##
 ##  path:     ~/src/config/dotfiles/git/             ##
 ##  purpose:  git ignore (global)                    ##
-##  date:     05/03/2016                             ##
-##  repo:     https://github.com/WebAppNut/dotfiles  ##
+##  date:     06/10/2017                             ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 ##  note:     called from gitconfig:excludesfile     ##
 #######################################################
 
 ## Custom #############################################
 _private/
+mongo_db/
 
 ## Node ###############################################
 ## Logs
@@ -22,7 +23,7 @@ pids
 *.seed
 
 ## Compiled
-build/
+# build/
 dist/
 
 ## Dependencies

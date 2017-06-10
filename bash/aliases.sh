@@ -2,29 +2,34 @@
 ##  filename: aliases.sh                             ##
 ##  path:     ~/src/config/dotfiles/bash/            ##
 ##  purpose:  bash command aliases                   ##
-##  date:     06/03/2016                             ##
+##  date:     06/10/2017                             ##
 ##  note:     sourced via bash_profile               ##
-##  repo:     https://github.com/WebAppNut/dotfiles  ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 #######################################################
 
+## git aliases ###########################################################
+# now handled by .gitconfig
+
 ## ru aliases ############################################################
-alias rgpl='ru.sh'                             # git pull ru repos
-alias gr='cd $trn/ru; ls -ahF'                 # goto ru folder
-alias gra='cd $trn/ru/apps; ls -ahF'           # goto apps folder
-alias gre='cd $trn/ru/repo/exercises; ls -ahF' # goto exercises
-alias grp='cd $trn/ru/repo/projects; ls -ahF'  # goto projects
-alias grd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
-alias gres='cd $trn/ru/_private/ru_repos/exercise-starters; ls -ahF'
-alias napp='webapp.sh'                         # create new app scaffolding
-alias http='http-server'                       # fire up webserver
-alias orc='$(open -a "Google Chrome.app" 'http://bit.ly/1YSKuCW') ' # open cal
-alias oapp='$(open -a "Google Chrome.app" 'http://localhost:8080')' # open app
+# alias app='msg.sh'                             # create new app scaffolding
+# alias rgpl='ru.sh'                             # git pull ru repos
+# alias gr='cd $trn/ru; ls -ahF'                 # goto ru folder
+# alias gra='cd $trn/ru/apps; ls -ahF'           # goto apps folder
+# alias gre='cd $trn/ru/repo/exercises; ls -ahF' # goto exercises
+# alias grp='cd $trn/ru/repo/projects; ls -ahF'  # goto projects
+# alias grd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
+# alias gres='cd $trn/ru/_private/ru_repos/exercise-starters; ls -ahF'
+# alias http='http-server'                       # fire up webserver
+# alias orc='$(open -a "Google Chrome.app" 'http://bit.ly/1YSKuCW') ' # open cal
+# alias oapp='$(open -a "Google Chrome.app" 'http://localhost:8080')' # open app
 
 ## goto folder aliases ###################################################
 alias gsrc='cd $src; ls -ahF'
 alias gcht='cd $src/cheats; ls -ahF'
 alias gtrn='cd $src/training; ls -ahF'
-alias gpro='cd $cfg/provision; ls -ahF'
+alias gdep='cd $src/deploy; ls -ahF'
+alias gace='cd ~/aced/app ls -ahF'
+alias gsit='cd $site ls -ahF'
 alias gbin='cd $cfg/bin; ls -ahF'
 alias gdot='cd $cfg/dotfiles; ls -ahF'
 
@@ -33,6 +38,7 @@ alias ..='cd ..'                            # cd up 1 level
 alias ..2='cd ../..'                        # cd up 2 levels
 alias ..3='cd ../../..'                     # cd up 3 levels
 alias ..4='cd ../../../..'                  # cd up 4 levels
+alias aced='$HOME/aced/app/aced.sh'         # AWS IAM/EC2 provisioning/tasks
 alias al='alias_list'                       # show all loaded aliases; [term]
 alias fp000='chmod a-rwx'                   # strip all file perms
 alias fp644='chmod go+r,u+rw'               # set file perms to 644
@@ -42,11 +48,9 @@ alias bak='backup'                          # backup(); [dir/file]
 alias c='clear'                             # clear screen
 alias ch='cheat'                            # search for term in note file
 alias cp='cp -iv'                           # copy; confirm; verbose
-alias cpwd="pwd | tr -d '\n' |pbcopy"       # copy working directory path
-alias ci="fc -ln -1 | tr -d '\n' |pbcopy"   # copy last command
-# alias cop="!! | pbcopy" 	                    # copy output of last command
-# turn into function:
-# alias co='fc -ln -1 | awk '\''{$1=$1}1'\'' | pbcopy'
+alias cpwd='pwd | tr -d "\n" | pbcopy'      # copy working directory path
+alias ci='fc -nl -1 | tr -d "\n" | pbcopy'  # copy prior command
+alias co='$(fc -nl -1) |tr -d "\n" |pbcopy' # copy output of prior command
 alias dns-f='dscacheutil -flushcache'       # flush dns cache
 alias emv='set -o vi; echo "vi mode"'       # set edit mode to vi
 alias eme='set -o emacs; echo "emacs mode"' # set edit mode to emacs (default)
@@ -63,6 +67,7 @@ alias ip='curl ip.appspot.com'              # list public facing ip address
 alias kb='key_backup.sh'                    # invoke backup script
 alias l.='ls -dAF .[^.]*'                   # ls only dotfiles
 alias l='ls -fF'                            # list all; no sort; link=/, dir=@
+alias lc='echo last command: $(fc -nl -1)'  # show last command
 alias ld='ls -dA */'                        # ls only dirs
 alias ll='ls_octal -f'                      # ls -l + octal perms (contents)
 alias lld='ls_octal -d'                     # ls -l + octal perms (dir)

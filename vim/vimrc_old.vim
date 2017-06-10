@@ -221,7 +221,7 @@ let g:startify_session_persistence = 1                     " auto save sessions
 let g:startify_session_delete_buffers = 1                  " bd open buffers
                                                            " ↓ start #s at 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-let g:startify_custom_header = [WebAppNut]
+let g:startify_custom_header = [DevOpsEtc]
 hi StartifyBracket ctermfg=244
 hi StartifyFile    ctermfg=64
 hi StartifyFooter  ctermfg=240

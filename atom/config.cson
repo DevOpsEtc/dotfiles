@@ -52,6 +52,9 @@
     visualforce: {}
     xml: {}
     xtemplate: {}
+  "atom-minify":
+    cssMinifier: "clean-css"
+    jsMinifier: "UglifyJS2"
   "atom-pair":
     pusher_app_key: ""
     pusher_app_secret: ""
@@ -61,11 +64,14 @@
     enabled: true
   core:
     audioBeep: false
-    automaticallyUpdate: false
     disabledPackages: [
       "metrics"
       "exception-reporting"
       "emmet"
+      "minimap-codeglance"
+      "open-in-browsers"
+      "minimap"
+      "minimap-autohider"
     ]
     ignoredNames: [
       "._*"
@@ -110,31 +116,44 @@
       "symbols-view"
     ]
     projectHome: "/Users/gp/src"
+    telemetryConsent: "no"
   editor:
     fontFamily: "Roboto Mono"
-    fontSize: 16
+    fontSize: 17
     invisibles: {}
     scrollPastEnd: true
   "export-html":
+    fontSize: 11
     lineNumber:
       use: false
     openIn: "browser"
     style: "grayscale.css"
   "find-and-replace": {}
   "fuzzy-finder": {}
-  "git-plus": {}
+  "git-plus":
+    general:
+      _analyticsUserId: "0227f2fe-1024-4402-828c-5903e57f81fa"
   linter:
-    displayLinterStatus: false
-    showErrorTabFile: false
-    showErrorTabProject: false
-    statusIconPosition: "Right"
-    statusIconScope: "File"
+    lintPreviewTabs: false
+  "linter-shellcheck":
+    userParameters: "-x -e SC2154"
+  "linter-ui-default":
+    decorateOnTreeView: "None"
+    gutterPosition: "Left"
+    showPanel: true
+    statusBarPosition: "Right"
+  "markdown-themeable-pdf":
+    enableCustomFooter: false
+    enableCustomHeader: false
+    enableXHTML: true
   minimap:
     plugins:
       codeglance: true
       codeglanceDecorationsZIndex: 0
       "minimap-autohide": true
       "minimap-autohideDecorationsZIndex": 0
+      "minimap-autohider": true
+      "minimap-autohiderDecorationsZIndex": 0
   "one-dark-ui": {}
   "open-recent": {}
   pigments: {}
@@ -147,6 +166,11 @@
       defaultPanelHeight: "250"
       fontFamily: "Roboto Mono for Powerline"
       fontSize: "16"
+      theme: "one-dark"
+    toggles:
+      runInsertedText: false
+  "project-manager":
+    sortBy: "title"
   "spell-check": {}
   "status-bar": {}
   tabs: {}
@@ -156,18 +180,34 @@
     lightSyntaxTheme: "one-light-syntax"
     lightUiTheme: "one-light-ui"
   "todo-show":
+    findTheseTodos: [
+      "t~"
+      "c~"
+      "f~"
+      "q~"
+      "n~"
+      "p~"
+      "e~"
+      "r~"
+    ]
     ignoreThesePaths: [
       "**/node_modules/"
       "**/vendor/"
       "**/bower_components/"
-      "**/.git/"
+      "**/.git"
       "**/_private/"
+      "**/_repo/"
+      "**/cheats/"
     ]
+    saveOutputAs: "Table"
   "tree-view":
     hideIgnoredNames: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
+".gfm.source":
+  editor:
+    softWrap: true
 ".js.source":
   editor:
     showIndentGuide: true

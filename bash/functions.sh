@@ -1,10 +1,11 @@
+
 #######################################################
 ##  filename: functions.sh                           ##
 ##  path:     ~/src/config/dotfiles/bash/            ##
 ##  purpose:  bash shell functions                   ##
-##  date:     06/04/2016                             ##
+##  date:     05/23/2017                             ##
 ##  note:     sourced via bash_profile               ##
-##  repo:     https://github.com/WebAppNut/dotfiles  ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 ##  source:   sourced by bash_profile                ##
 #######################################################
 
@@ -199,6 +200,73 @@ scratch() {
       ;;
     esac
 }
+site_open() {
+  if [ "$1" == "draft" ]; then
+    link=http://localhost:$port
+  elif [ "$1" == "dev" ]; then
+    link=https://dev.devopsetc.com
+  elif [ "$1" == "live" ]; then
+    link=https://www.devopsetc.com
+  fi
+  open -a "Google Chrome.app" "$link"
+  # force refresh to load change; heredoc indent kludge = tab characters "	"
+  osascript <<- "REFRESH"
+    tell application "System Events"
+      tell application "Google Chrome" to activate
+      keystroke "r" using {command down}
+    end tell
+	REFRESH
+}
+site() {
+  [[ "$#" -eq 0 ]] && { echo -e "$red\nNo Arguments Passed! $reset"; return; }
+  cd $site || { echo -e "$red\nCan't find $site! $reset"; return; }
+  port=8080
+  sites=/var/www/devopsetc.com
+
+  if [ "$1" == "x" ]; then
+    # [[ $(ps | grep '[h]ugo server') ]] && killall hugo
+    [[ $(ps | grep '[h]ugo server') ]] && kill $hugo_server_pid
+  elif [ "$1" == "post" ]; then
+    if [ -n "$2" ]; then
+      local IFS='-' # replace spaces with dashes
+      echo -e "$green \nCreating new DevOpsEtc post: ${*:2}... $rs"
+      # check for existing dupe post; concatenate all arguments after "post"
+      if [ ! -f ./content/post/"${*:2}".md ]; then
+        echo $blue; hugo new post/"${*:2}".md
+        site draft # invoke func: site again with draft parameter this time
+      else
+        echo -e "$yellow \nPost with this title already exists: ${*:2} $rs"
+      fi
+    else
+      echo -e "$yellow \nOops, no post title passed $rs"
+    fi
+  elif [ "$1" == "draft" ]; then
+    if ! ps | grep -q '[h]ugo server'; then
+      [[ -d ./public ]] && rm -rf ./public &>/dev/null
+      echo -e "$green \nStarting Hugo server & forcing to background... $rs"
+      echo $blue; hugo server --baseURL="http://localhost:$port" \
+        --port $port --buildDrafts --ignoreCache=true & hugo_server_pid=$!
+      echo
+    fi
+    site_open draft # invoke func: open localhost website
+  elif [ "$1" == "dev" ]; then
+    [[ -d ./public ]] && rm -rf ./public &>/dev/null
+    echo $blue; hugo --baseURL="https://dev.devopsetc.com" --buildDrafts
+    rsync -rltvH --del --rsync-path="sudo rsync" ./public/* \
+      aced:$sites/dev/public/
+    site_open dev
+  elif [ "$1" == "live" ]; then
+    [[ -d ./public ]] && rm -rf ./public &>/dev/null
+    echo $blue; hugo --baseURL="https://www.devopsetc.com"
+    rsync -rltvH --rsync-path="sudo rsync" ./public/* aced:$sites/live/public/ \
+      --exclude '401*' \
+      --exclude '/css/main.css' \
+      --exclude '/js/main.js' \
+      --del
+
+    site_open live
+  fi
+}
 tags() {
   # purpose: # generate ctags file filled with symbols from all ~/src/* projects
   case $1 in
@@ -207,8 +275,8 @@ tags() {
     r|rm) rm -f $src/.tags;; # remove
        *)
        init_pwd="$(pwd)"     # store pwd
-       cd $src
+       cd $src || return
        ctags -R --exclude=.git --exclude=_private -f .tags # generate
-       cd $init_pwd;;        # goto initial pwd
+       cd $init_pwd || return;;        # goto initial pwd
   esac
 }

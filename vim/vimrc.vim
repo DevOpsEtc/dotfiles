@@ -4,7 +4,7 @@
 " ##  symlink:  ~/.vimrc                               ##
 " ##  purpose:  bash shell configuration               ##
 " ##  date:     05/06/2016                             ##
-" ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+" ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 " #######################################################
 "
 
