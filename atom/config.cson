@@ -135,6 +135,8 @@
       codeglanceDecorationsZIndex: 0
       "minimap-autohide": true
       "minimap-autohideDecorationsZIndex": 0
+      "minimap-autohider": true
+      "minimap-autohiderDecorationsZIndex": 0
   "one-dark-ui": {}
   "open-recent": {}
   pigments: {}
