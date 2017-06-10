@@ -1,30 +1,37 @@
-cheats:
-  title: "Cheats"
-  paths: [
-    "/Users/gp/src/cheats"
-    "/Users/gp/src"
-  ]
-dotfile:
-  title: "Dotfiles"
-  paths: [
-    "/Users/gp/src/config/dotfiles"
-    "/Users/gp/src"
-  ]
-provision:
-  title: "Provision"
-  paths: [
-    "/Users/gp/src/config/provision"
-    "/Users/gp/src"
-  ]
-ru:
-  title: "RU"
-  paths: [
-    "/Users/gp/src/training/ru"
-    "/Users/gp/src"
-  ]
-training:
-  title: "Training"
-  paths: [
-    "/Users/gp/src/training"
-    "/Users/gp/src"
-  ]
+[
+  {
+    title: "* ACED"
+    paths: [
+      "/Users/gp/src/deploy/cloud/aws"
+      "/Users/gp/src"
+    ]
+  }
+  {
+    title: "* DevOpsEtc.com"
+    paths: [
+      "/Users/gp/src/devopsetc.com/hugo"
+      "/Users/gp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/cheats"
+    ]
+  }
+  {
+    title: "Cheats"
+    paths: [
+      "/Users/gp/src/cheats"
+      "/Users/gp/src"
+    ]
+  }
+  {
+    title: "Deploy"
+    paths: [
+      "/Users/gp/src/deploy"
+      "/Users/gp/src"
+    ]
+  }
+  {
+    title: "Dotfiles"
+    paths: [
+      "/Users/gp/src/config/dotfiles"
+      "/Users/gp/src"
+    ]
+  }
+]

@@ -3,8 +3,8 @@
   ##  path:     ~/src/config/dotfiles/atom/            ##
   ##  symlink:  ~/.atom/                               ##
   ##  purpose:  atom editor keymap                     ##
-  ##  date:     05/22/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  ##  date:     03/16/2017                             ##
+  ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
   #######################################################
 
 # You can create a new keybinding in this file by typing 'key' and then hitting
@@ -34,7 +34,7 @@
 # 'atom-workspace atom-text-editor:not([mini])':
 
 'atom-workspace':
-  'ctrl-2':         'theme-toggler:toggle'
+  'ctrl-3':         'theme-toggler:toggle'
   'cmd-k up':       'unset!'
   'cmd-k right':    'unset!'
   'cmd-k left':     'unset!'
@@ -69,7 +69,7 @@
 '.platform-darwin atom-workspace atom-text-editor:not([mini])':
   'shift-cmd-enter':  'editor:newline-above'
   'alt-cmd-m':        'maximize-panes:maximize'
-  'alt-l':            'linter:toggle'
+  'alt-l':            'linter:toggle-active-editor'
 
 # symbols-view
 '.platform-darwin atom-text-editor':
@@ -90,11 +90,13 @@
   'ctrl-`':           'platformio-ide-terminal:toggle'
   'cmd-alt-x':        'platformio-ide-terminal:close-all'
   'cmd-alt-r':        'platformio-ide-terminal:rename'
+  'ctrl-2':           'platformio-ide-terminal:focus'
 
 '.platform-darwin .platformio-ide-terminal .terminal':
   'cmd-c':            'platformio-ide-terminal:copy'
   'cmd-v':            'platformio-ide-terminal:paste'
   'ctrl-1':           'platformio-ide-terminal:fullscreen'
+  # 'ctrl-2':           'platformio-ide-terminal:focus'
 
 'atom-workspace, .command-palette atom-text-editor':
   'cmd-p':            'command-palette:toggle'

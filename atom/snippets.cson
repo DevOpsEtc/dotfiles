@@ -3,8 +3,8 @@
   ##  path:     ~/src/config/dotfiles/atom/            ##
   ##  symlink:  ~/.atom/                               ##
   ##  purpose:  atom editor snippets                   ##
-  ##  date:     04/19/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  ##  date:     07/02/2016                             ##
+  ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
   #######################################################
 
 # create a new snippet in this file by typing "snip" and then hitting tab.
@@ -23,86 +23,72 @@
 # Python: .source.python
 # plain text (including markdown): .text.plain
 
-".text.html:not(.meta.tag)":
-  "script all":
-    "prefix": "source all"
-    "body": """
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
-          <link rel="stylesheet" href="main.css">
-          <script type="text/javascript" src="app.js"></script>
-          <meta charset="utf-8">
-          <title>$1</title>
-        </head>
-        <body>
-          $2
-        </body>
-      </html>
-    """
-  "ng-app":
-    "prefix": "ng-app"
-    "body": """
+
+'.text.html':
+  'ng-app':
+    'prefix': 'ng-app'
+    'body': """
       ng-app="$1"
       """
-  "ng-click":
-    "prefix": "ng-click"
-    "body": """
-      ng-click="$1"
+  'ng-if':
+    'prefix': 'ng-if'
+    'body': """
+      ng-if="$1"
       """
-  "ng-controller":
-    "prefix": "ng-controller"
-    "body": """
-      ng-controller="$1"
-      """
-  "ng-init":
-    "prefix": "ng-init"
-    "body": """
+  'ng-init':
+    'prefix': 'ng-init'
+    'body': """
       ng-init="$1"
       """
-  "ng-hide":
-    "prefix": "ng-hide"
-    "body": """
-      ng-hide="$1"
-      """
-  "ng-model":
-    "prefix": "ng-model"
-    "body": """
-      ng-model="$1"
-      """
-  "ng-mouseover":
-    "prefix": "ng-mouseover"
-    "body": """
-      ng-mouseover="$1"
-      """
-  "ng-mouseleave":
-    "prefix": "ng-mouseleave"
-    "body": """
-      ng-mouseleave="$1"
-      """
-  "ng-mouseenter":
-    "prefix": "ng-mouseenter"
-    "body": """
-      ng-mouseenter="$1"
-      """
-  "ng-repeat":
-    "prefix": "ng-repeat"
-    "body": """
-      ng-repeat="$1"
-      """
-  "ng-show":
-    "prefix": "ng-show"
-    "body": """
+  'ng-show':
+    'prefix': 'ng-show'
+    'body': """
       ng-show="$1"
       """
-  "ng-style":
-    "prefix": "ng-style"
-    "body": """
+  'ng-hide':
+    'prefix': 'ng-hide'
+    'body': """
+      ng-hide="$1"
+      """
+  'ng-repeat':
+    'prefix': 'ng-repeat'
+    'body': """
+      ng-repeat="$1"
+      """
+  'ng-model':
+    'prefix': 'ng-model'
+    'body': """
+      ng-model="$1"
+      """
+  'ng-click':
+    'prefix': 'ng-click'
+    'body': """
+      ng-click="$1"
+      """
+  'ng-style':
+    'prefix': 'ng-style'
+    'body': """
       ng-style="$1"
+      """
+  'ng-src':
+    'prefix': 'ng-src'
+    'body': """
+      ng-src="$1"
+      """
+  'ng-class':
+    'prefix': 'ng-class'
+    'body': """
+      ng-class="$1"
+      """
+  'ng-cloak':
+    'prefix': 'ng-cloak'
+    'body': """
+      ng-cloak="$1"
+      """
+  'ng-options':
+    'prefix': 'ng-options'
+    'body': """
+      ng-options="$1"
       """
 
 '.plain.text':
@@ -113,7 +99,7 @@
       ##  filename: .txt                                 ##
       ##  path:     ~/src/cheats/                        ##
       ##  date:     00/00/2016                           ##
-      ##  repo:     https://github.com/WebAppNut/cheats  ##
+      ##  repo:     https://github.com/DevOpsEtc/cheats  ##
       #####################################################
 
       ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
@@ -142,7 +128,7 @@
       ##  symlink:  ~/                                        ##
       ##  purpose:                                            ##
       ##  date:     00/00/2016                                ##
-      ##  repo:     https://github.com/WebAppNut/             ##
+      ##  repo:     https://github.com/DevOpsEtc/             ##
       ##  source:   $ . ~/src/config/bin/.sh                  ##
       ##  note:                                               ##
       ##########################################################
@@ -151,8 +137,8 @@
 
 # angularjs
 ".source.js, .source.js-semantic":
-  "iffe Immediately-Invoked Function Expression":
-    "prefix": "iffe"
+  "IIFE Immediately-Invoked Function Expression":
+    "prefix": "iife"
     "body": """
     /* IIFE (immediately-invoked function expression)
       - avoids variable hoisting from within blocks
@@ -161,7 +147,7 @@
     (function() {
     	'use strict';
 
-    })();
+    })(); // function end: IIFE
     """
   "module new":
     "prefix": "ngm"

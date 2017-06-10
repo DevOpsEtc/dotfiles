@@ -4,7 +4,7 @@
 ##  symlink:  ~/.bash_profile                        ##
 ##  purpose:  bash shell settings                    ##
 ##  date:     06/04/2016                             ##
-##  repo:     https://github.com/WebAppNut/dotfiles  ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 #######################################################
 
 # disable per-terminal bash sessions

@@ -4,12 +4,12 @@
 ##  symlink:  ~/                                     ##
 ##  purpose:  git configuration                      ##
 ##  date:     05/07/2016                             ##
-##  repo:     https://github.com/WebAppNut/dotfiles  ##
+##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 #######################################################
 
 [user]
-  name = WebAppNut
-  email = WebAppNut@users.noreply.github.com
+  name = DevOpsEtc
+  email = DevOpsEtc@users.noreply.github.com
 [core]
   editor = 'atom --wait'
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -89,8 +89,9 @@
   fk = fsck                                 #
   g = grep -p                               # print content matching [pattern]
                                             # ↓ print formatted commit logs
-  l = log --pretty=format:'%C(blue)%h %Cgreen%>(14)%ad %C(yellow)%aN %Creset%s \
-  %Cred%d' --date=relative
+  l = log --pretty=format:'%C(blue)%h %Cgreen%>(14)%ar %C(yellow)%aN %Creset%s \
+  %Cred%d'
+
   ld = !git l -p                            # print commit log diff
   lg = !git l --graph                       # print commit log graph
   ll = !git ld -1                           # print commit log diff (last entry)

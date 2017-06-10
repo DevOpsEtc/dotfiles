@@ -4,7 +4,7 @@
   ##  symlink:  ~/.atom/                               ##
   ##  purpose:  atom editor startup                    ##
   ##  date:     04/19/2016                             ##
-  ##  repo:     https://github.com/WebAppNut/dotfiles  ##
+  ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
   #######################################################
 
 # Atom will evaluate this file each time a new window is opened. It is run
