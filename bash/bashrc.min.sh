@@ -19,16 +19,16 @@ lwe=/var/log/nginx/error.log                  # website errors
 lwa=/var/log/nginx/access.log                 # website access
 
 ## Colors (scripts & prompt) ##########################################
-export rs=$(tput sgr0)                        # text: reset attributes
-export blue=$(tput setaf 33)                  # text: blue
-export gray=$(tput setaf 250)                 # text: gray
-export green=$(tput setaf 64)                 # text: green
-export greenb=$(tput bold && tput setaf 64)   # text: green & bold
-export red=$(tput setaf 160)                  # text: red
-export redb=$(tput bold && tput setaf 160)    # text: red & bold
-export yellow=$(tput setaf 136)               # text: yellow
-export yellowb=$(tput bold && tput setaf 136) # text: yellow & bold
-export white=$(tput setaf 7)                  # text: white
+export rs=$(tty -s && tput sgr0)                                  # reset
+export blue=$(tty -s && tput setaf 33)                            # blue
+export gray=$(tty -s && tput setaf 250)                           # gray
+export green=$(tty -s && tput setaf 64)                           # green
+export greenb=$(tty -s && tput bold && tty -s && tput setaf 64)   # green bold
+export red=$(tty -s && tput setaf 160)                            # red
+export redb=$(tty -s && tput bold && tty -s && tput setaf 160)    # red bold
+export yellow=$(tty -s && tput setaf 136)                         # yellow
+export yellowb=$(tty -s && tput bold && tty -s && tput setaf 136) # yellow bold
+export white=$(tty -s && tput setaf 7)                            # white
 
 ## Editor #############################################################
 export EDITOR="vim"                           # use vim as default text editor
@@ -54,7 +54,7 @@ case "$TERM" in
 esac
 
 ## Prompt #############################################################
-PS1='\n\u@\h:\w\ $ '
+PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 
 ## Aliases ###################################################
 alias gliv='cd $live; ls -lahF'             # goto production docroot
