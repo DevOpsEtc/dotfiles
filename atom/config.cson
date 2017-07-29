@@ -140,7 +140,6 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     gutterPosition: "Left"
-    showPanel: true
     statusBarPosition: "Right"
   "markdown-themeable-pdf":
     enableCustomFooter: false

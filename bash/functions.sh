@@ -224,7 +224,6 @@ site() {
   sites=/var/www/devopsetc.com
 
   if [ "$1" == "x" ]; then
-    # [[ $(ps | grep '[h]ugo server') ]] && killall hugo
     [[ $(ps | grep '[h]ugo server') ]] && kill $hugo_server_pid
   elif [ "$1" == "post" ]; then
     if [ -n "$2" ]; then
@@ -263,7 +262,6 @@ site() {
       --exclude '/css/main.css' \
       --exclude '/js/main.js' \
       --del
-
     site_open live
   fi
 }
