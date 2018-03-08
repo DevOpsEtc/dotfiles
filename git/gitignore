@@ -3,13 +3,14 @@
 ##  filename: .gitignore                             ##
 ##  path:     ~/src/config/dotfiles/git/             ##
 ##  purpose:  git ignore (global)                    ##
-##  date:     06/10/2017                             ##
+##  date:     01/30/2018                             ##
 ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 ##  note:     called from gitconfig:excludesfile     ##
 #######################################################
 
 ## Custom #############################################
 _private/
+__pycache__/
 mongo_db/
 
 ## Node ###############################################

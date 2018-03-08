@@ -3,7 +3,7 @@
 " ##  path:     ~/src/config/dotfiles/vim/             ##
 " ##  symlink:  ~/.vimrc                               ##
 " ##  purpose:  minimal settings with no plugins       ##
-" ##  date:     05/10/2017                             ##
+" ##  date:     09/22/2017                             ##
 " ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 " #######################################################
 
@@ -11,32 +11,32 @@
 " map key combos to match my atom setup
 
 " minimal sane settings
-set ai
-set ar
-set bs=2
-set et
-set fo=cqrt
-set hi=100
-set hid
-set is
-set ic
-set ls=2
-set nohlsearch
-set nocp
-set noeb
-set nosol
-set nu
-set ru
-set scs
-set shm=aItTs
-set si
-set sm
-set so=3
-set sw=2
-set tf
-set ts=2
-set ww=b,s,h,l,<,>,[,]
-set vb
+set ai                                          " autoindent
+set ar                                          " autoread
+set bs=2                                        " backspace
+set et                                          " expandtab
+set fo=cqrt                                     " formatoptions
+set hi=100                                      " history
+set hid                                         " hidden
+set is                                          " incsearch
+set ic                                          " ignorecase
+set ls=2                                        " laststatus
+set nohlsearch                                  "
+set nocp                                        " nocompatable
+set noeb                                        " noerrorbells
+set nosol                                       " nostartofline
+set nu                                          " number
+set ru                                          " ruler
+set scs                                         " smartcase
+set shm=aItTs                                   " shortmess
+set si                                          " smartindent
+set sm                                          " showmatch
+set so=3                                        " scrolloff
+set sw=2                                        " shiftwidth
+set tf                                          " ttyfast
+set ts=2                                        " tabstop
+set ww=b,s,h,l,<,>,[,]                          " whichwrap
+set vb                                          " visualbell
 
 " Make it pretty
 highlight LineNr ctermfg=darkgrey

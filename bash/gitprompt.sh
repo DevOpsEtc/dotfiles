@@ -1,1 +1,1 @@
-/Users/gp/src/config/dotfiles/bash-git-prompt/gitprompt.sh
+/Users/gp/projects/config/dotfiles/bash-git-prompt/gitprompt.sh

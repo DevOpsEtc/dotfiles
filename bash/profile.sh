@@ -1,6 +1,6 @@
 #######################################################
 ##  filename: profile.sh                             ##
-##  path:     ~/src/config/dotfiles/bash/            ##
+##  path:     ~/projects/config/dotfiles/bash/       ##
 ##  symlink:  ~/.bash_profile                        ##
 ##  purpose:  bash shell settings                    ##
 ##  date:     06/04/2016                             ##
@@ -11,13 +11,13 @@
 # not needed if bashrc has shopt -s histappend
 # SHELL_SESSION_HISTORY=0
 
-src_files=(
+projects_files=(
   aliases.sh    # source bash command aliases
   functions.sh  # source bash functions
   bashrc.sh     # source shell settings; OSX login shells don't process .bashrc
   gitprompt.sh  # source bash-git-prompt
 )
 
-for i in "${src_files[@]}"; do
-  . $HOME/src/config/dotfiles/bash/$i  # source file
+for i in "${projects_files[@]}"; do
+  . $HOME/projects/config/dotfiles/bash/$i  # source file
 done

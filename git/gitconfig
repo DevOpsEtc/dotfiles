@@ -13,7 +13,7 @@
 [core]
   editor = 'atom --wait'
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  excludesfile = ~/src/config/dotfiles/git/gitignore
+  excludesfile = ~/projects/config/dotfiles/git/gitignore
 [format]
   # pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
 [log]

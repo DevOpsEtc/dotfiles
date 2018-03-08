@@ -1,18 +1,17 @@
 #######################################################################
 ##  filename: bashrc.sh                                              ##
-##  path:     ~/src/config/dotfiles/bash/                            ##
+##  path:     ~/projects/config/dotfiles/bash/       		     ##
 ##  purpose:  bash shell configuration                               ##
-##  date:     05/09/2017                                             ##
+##  date:     11/27/2017                                             ##
 ##  note:     sourced via bash_profile                               ##
 ##  repo:     https://github.com/DevOpsEtc/dotfiles                  ##
 #######################################################################
 
 ## Paths ##############################################################
-src=$HOME/src                               # path to src folder
-trn=$src/training                           # path to training folder
-cfg=$src/config                             # path to config folder
-dep=$src/deploy                             # path to deploy folder
-site=$src/devopsetc.com/hugo                # path to website folder
+projects=$HOME/projects                       # path to projects folder
+cfg=$projects/config                          # path to config folder
+dep=$projects/deploy                          # path to deploy folder
+blog=$projects/blog/hugo             	      # path to website folder
 # p_ply=$HOME/work/provision/playbook         # path: ansible assets
 # p_inv=$p_ply/inventory                      # path: ansible inventory
 # p_pbk=$p_ply/playbook.yml                   # path: ansible main playbook
@@ -40,7 +39,7 @@ export GREP_OPTIONS='--color=auto'          # always colorize grep matches
 export VISUAL=vim                           # use vim for visudo & crontab
 
 ## History ############################################################
-export HISTFILE=$src/.bash_history          # command history filepath
+export HISTFILE=$projects/.bash_history     # command history filepath
 export HISTFILESIZE=5000                    # max commands stored in history
 export HISTSIZE=5000                        # max commands to save in a session
 export HISTTIMEFORMAT='%D %T '              # prefix timestamp on history list
@@ -84,7 +83,7 @@ prompt() {
 
   # build out custom PS1 prompt
   PS1='\[\033]0;\w\007\]'                     # xterm title: pwd = ~/
-  # PS1+='\[$blue\]\w'                         # pwd $HOME = short ~/
+  # PS1+='\[$blue\]\w'                        # pwd $HOME = short ~/
   PS1+='\[$gray\]\w'                          # pwd $HOME = short ~/
   PS1+='\[$yellow\]'                          # set dynamic count text color
   PS1+='$([ $sc -gt 0 ] && echo \ ⁼$sc)'      # show scratch note count if > 0

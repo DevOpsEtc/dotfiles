@@ -2,7 +2,7 @@
 
   #######################################################
   ##  filename: git-prompt-colors.sh                   ##
-  ##  path:     ~/src/config/dotfiles/                 ##
+  ##  path:     ~/projects/config/dotfiles/            ##
   ##  symlink:  ~/                                     ##
   ##  purpose:  bash-git-prompt theme template         ##
   ##  date:     12/04/2015                             ##

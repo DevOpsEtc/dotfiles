@@ -1,8 +1,8 @@
 #######################################################
 ##  filename: aliases.sh                             ##
-##  path:     ~/src/config/dotfiles/bash/            ##
+##  path:     ~/projects/config/dotfiles/bash/       ##
 ##  purpose:  bash command aliases                   ##
-##  date:     06/10/2017                             ##
+##  date:     03/08/2018                             ##
 ##  note:     sourced via bash_profile               ##
 ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 #######################################################
@@ -10,26 +10,12 @@
 ## git aliases ###########################################################
 # now handled by .gitconfig
 
-## ru aliases ############################################################
-# alias app='msg.sh'                             # create new app scaffolding
-# alias rgpl='ru.sh'                             # git pull ru repos
-# alias gr='cd $trn/ru; ls -ahF'                 # goto ru folder
-# alias gra='cd $trn/ru/apps; ls -ahF'           # goto apps folder
-# alias gre='cd $trn/ru/repo/exercises; ls -ahF' # goto exercises
-# alias grp='cd $trn/ru/repo/projects; ls -ahF'  # goto projects
-# alias grd='cd $trn/ru/_private/ru_repos/May2016DemoCode; ls -ahF'
-# alias gres='cd $trn/ru/_private/ru_repos/exercise-starters; ls -ahF'
-# alias http='http-server'                       # fire up webserver
-# alias orc='$(open -a "Google Chrome.app" 'http://bit.ly/1YSKuCW') ' # open cal
-# alias oapp='$(open -a "Google Chrome.app" 'http://localhost:8080')' # open app
-
 ## goto folder aliases ###################################################
-alias gsrc='cd $src; ls -ahF'
-alias gcht='cd $src/cheats; ls -ahF'
-alias gtrn='cd $src/training; ls -ahF'
-alias gdep='cd $src/deploy; ls -ahF'
+alias gpro='cd $projects; ls -ahF'
+alias gche='cd $projects/cheats; ls -ahF'
+alias gblo='cd $blog; ls -ahF'
+alias gdep='cd $dep; ls -ahF'
 alias gace='cd $HOME/aced/app; ls -ahF'
-alias gsit='cd $site; ls -ahF'
 alias gbin='cd $cfg/bin; ls -ahF'
 alias gdot='cd $cfg/dotfiles; ls -ahF'
 
@@ -84,6 +70,7 @@ alias s='scratch'                           # create temporary note; hud in ps1
 alias ver='sw_vers'                         # check osx version
 alias which='which -a'                      # find executable [app] instances
 alias wk='work.sh'                          # invoke bettersnaptool snap script
+alias wl='web_logs'                         # invoke visual web log analyzer
 
 # disabled aliases for tools and projects no longer use
 ## ansible aliases #######################################################

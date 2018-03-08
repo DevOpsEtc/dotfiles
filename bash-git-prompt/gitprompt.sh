@@ -26,6 +26,9 @@ function echoc() {
 
 function get_theme() {
   local CUSTOM_THEME_FILE="${HOME}/.git-prompt-colors.sh"
+  if [[ ! (-z ${GIT_PROMPT_THEME_FILE} ) ]]; then
+    CUSTOM_THEME_FILE=$GIT_PROMPT_THEME_FILE
+  fi
   local DEFAULT_THEME_FILE="${__GIT_PROMPT_DIR}/themes/Default.bgptheme"
 
   if [[ -z ${GIT_PROMPT_THEME} ]]; then
@@ -66,6 +69,15 @@ function get_theme() {
   fi
 }
 
+function git_prompt_load_colors() {
+  if gp_set_file_var __PROMPT_COLORS_FILE prompt-colors.sh ; then
+    # outsource the color defs
+    source "$__PROMPT_COLORS_FILE"
+  else
+    echo 1>&2 "Cannot find prompt-colors.sh!"
+  fi
+}
+
 function git_prompt_load_theme() {
   get_theme
   local DEFAULT_THEME_FILE="${__GIT_PROMPT_DIR}/themes/Default.bgptheme"
@@ -74,6 +86,7 @@ function git_prompt_load_theme() {
 }
 
 function git_prompt_list_themes() {
+  git_prompt_load_colors
   git_prompt_dir
   get_theme
 
@@ -207,11 +220,7 @@ function git_prompt_config() {
   #  prompt-colors.sh -- sets generic color names suitable for bash 'PS1' prompt
   #  git-prompt-colors.sh -- sets the GIT_PROMPT color scheme, using names from prompt-colors.sh
 
-  if gp_set_file_var __PROMPT_COLORS_FILE prompt-colors.sh ; then
-    source "$__PROMPT_COLORS_FILE"        # outsource the color defs
-  else
-    echo 1>&2 "Cannot find prompt-colors.sh!"
-  fi
+  git_prompt_load_colors
 
   # source the user's ~/.git-prompt-colors.sh file, or the one that should be
   # sitting in the same directory as this script
@@ -284,6 +293,7 @@ function git_prompt_config() {
     fi
     # __GIT_STATUS_CMD defined
   fi
+  unset GIT_BRANCH
 }
 
 function setLastCommandState() {
@@ -321,7 +331,7 @@ function setGitPrompt() {
 
   git_prompt_config
 
-  if [[ ! -e "$repo" ]]; then
+  if [[ ! -e "$repo" ]] || [[ "$GIT_PROMPT_DISABLE" = 1 ]]; then
     PS1="$EMPTY_PROMPT"
     return
   fi
@@ -332,10 +342,23 @@ function setGitPrompt() {
   fi
 
   unset GIT_PROMPT_IGNORE
+  OLD_GIT_PROMPT_SHOW_UNTRACKED_FILES=${GIT_PROMPT_SHOW_UNTRACKED_FILES}
+  unset GIT_PROMPT_SHOW_UNTRACKED_FILES
 
   if [[ -e "$repo/.bash-git-rc" ]]; then
-    source "$repo/.bash-git-rc"
+    # The config file can only contain variable declarations on the form A_B=0 or G_P=all
+    local CONFIG_SYNTAX="^(FETCH_REMOTE_STATUS|GIT_PROMPT_SHOW_UNTRACKED_FILES|GIT_PROMPT_IGNORE)=[0-9a-z]+$"
+    if egrep -q -v "$CONFIG_SYNTAX" "$repo/.bash-git-rc"; then
+      echo ".bash-git-rc can only contain variable values on the form NAME=value. Ignoring file." >&2
+    else
+      source "$repo/.bash-git-rc"
+    fi
   fi
+
+  if [ -z "${GIT_PROMPT_SHOW_UNTRACKED_FILES}" ]; then
+    GIT_PROMPT_SHOW_UNTRACKED_FILES=${OLD_GIT_PROMPT_SHOW_UNTRACKED_FILES}
+  fi
+  unset OLD_GIT_PROMPT_SHOW_UNTRACKED_FILES
 
   if [[ "$GIT_PROMPT_IGNORE" = 1 ]]; then
     PS1="$EMPTY_PROMPT"
@@ -409,6 +432,9 @@ function checkUpstream() {
 }
 
 function replaceSymbols() {
+  # Disable globbing, so a * could be used as symbol here
+  set -f
+
   if [[ -z ${GIT_PROMPT_SYMBOLS_NO_REMOTE_TRACKING} ]]; then
     GIT_PROMPT_SYMBOLS_NO_REMOTE_TRACKING=L
   fi
@@ -418,6 +444,23 @@ function replaceSymbols() {
   local VALUE2=${VALUE1//_NO_REMOTE_TRACKING_/${GIT_PROMPT_SYMBOLS_NO_REMOTE_TRACKING}}
 
   echo ${VALUE2//_PREHASH_/${GIT_PROMPT_SYMBOLS_PREHASH}}
+
+  # reenable globbing symbols
+  set +f
+}
+
+function createPrivateIndex {
+  # Create a copy of the index to avoid conflicts with parallel git commands, e.g. git rebase.
+  local __GIT_INDEX_FILE
+  local __GIT_INDEX_PRIVATE
+  if [[ -z "$GIT_INDEX_FILE" ]]; then
+    __GIT_INDEX_FILE="$(git rev-parse --git-dir)/index"
+  else
+    __GIT_INDEX_FILE="$GIT_INDEX_FILE"
+  fi
+  __GIT_INDEX_PRIVATE="/tmp/git-index-private$$"
+  command cp "$__GIT_INDEX_FILE" "$__GIT_INDEX_PRIVATE" 2>/dev/null
+  echo "$__GIT_INDEX_PRIVATE"
 }
 
 function updatePrompt() {
@@ -433,20 +476,38 @@ function updatePrompt() {
   export __GIT_PROMPT_IGNORE_STASH=${GIT_PROMPT_IGNORE_STASH}
   export __GIT_PROMPT_SHOW_UPSTREAM=${GIT_PROMPT_SHOW_UPSTREAM}
 
+  if [ -z "${GIT_PROMPT_SHOW_UNTRACKED_FILES}" ]; then
+    export __GIT_PROMPT_SHOW_UNTRACKED_FILES=all
+  else
+    export __GIT_PROMPT_SHOW_UNTRACKED_FILES=${GIT_PROMPT_SHOW_UNTRACKED_FILES}
+  fi
+
+  if [ -z "${GIT_PROMPT_SHOW_CHANGED_FILES_COUNT}" ]; then
+    export __GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=1
+  else
+    export __GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=${GIT_PROMPT_SHOW_CHANGED_FILES_COUNT}
+  fi
+
+  local GIT_INDEX_PRIVATE="$(createPrivateIndex)"
+  #important to define GIT_INDEX_FILE as local: This way it only affects this function (and below) - even with the export afterwards
+  local GIT_INDEX_FILE
+  export GIT_INDEX_FILE="$GIT_INDEX_PRIVATE"
+
   local -a git_status_fields
   git_status_fields=($("$__GIT_STATUS_CMD" 2>/dev/null))
 
-  local GIT_BRANCH=$(replaceSymbols ${git_status_fields[0]})
+  export GIT_BRANCH=$(replaceSymbols ${git_status_fields[0]})
   local GIT_REMOTE="$(replaceSymbols ${git_status_fields[1]})"
   if [[ "." == "$GIT_REMOTE" ]]; then
     unset GIT_REMOTE
   fi
 
-  local GIT_UPSTREAM="${git_status_fields[2]}"
-  if [[ -z "${__GIT_PROMPT_SHOW_UPSTREAM}" || "^" == "$GIT_UPSTREAM" ]]; then
+  local GIT_UPSTREAM_PRIVATE="${git_status_fields[2]}"
+  if [[ -z "${__GIT_PROMPT_SHOW_UPSTREAM}" || "^" == "$GIT_UPSTREAM_PRIVATE" ]]; then
     unset GIT_UPSTREAM
   else
-    GIT_UPSTREAM="${GIT_PROMPT_UPSTREAM//_UPSTREAM_/${GIT_UPSTREAM}}"
+    export GIT_UPSTREAM=${GIT_UPSTREAM_PRIVATE}
+    local GIT_FORMATTED_UPSTREAM="${GIT_PROMPT_UPSTREAM//_UPSTREAM_/\$GIT_UPSTREAM}"
   fi
 
   local GIT_STAGED=${git_status_fields[3]}
@@ -458,7 +519,8 @@ function updatePrompt() {
 
   local NEW_PROMPT="$EMPTY_PROMPT"
   if [[ -n "$git_status_fields" ]]; then
-    local STATUS="${PROMPT_LEADING_SPACE}${GIT_PROMPT_PREFIX}${GIT_PROMPT_BRANCH}${GIT_BRANCH}${ResetColor}"
+    local STATUS_PREFIX="${PROMPT_LEADING_SPACE}${GIT_PROMPT_PREFIX}${GIT_PROMPT_BRANCH}\${GIT_BRANCH}${ResetColor}${GIT_FORMATTED_UPSTREAM}"
+    local STATUS=""
 
     # __add_status KIND VALEXPR INSERT
     # eg: __add_status  'STAGED' '-ne 0'
@@ -471,7 +533,7 @@ function updatePrompt() {
         v="\$GIT_$1 $2"
       fi
       if eval "test $v" ; then
-        if [[ $# -lt 2 || "$3" != '-' ]]; then
+        if [[ $# -lt 2 || "$3" != '-' ]] && [[ "x$__GIT_PROMPT_SHOW_CHANGED_FILES_COUNT" == "x1" || "x$1" == "xREMOTE" ]]; then
           __add_status "\$GIT_PROMPT_$1\$GIT_$1\$ResetColor"
         else
           __add_status "\$GIT_PROMPT_$1\$ResetColor"
@@ -488,23 +550,25 @@ function updatePrompt() {
       eval "STATUS=\"$STATUS$1\""
     }
 
-    __add_status        '$GIT_UPSTREAM'
     __chk_gitvar_status 'REMOTE'     '-n'
-    __add_status        "$GIT_PROMPT_SEPARATOR"
-    __chk_gitvar_status 'STAGED'     '-ne 0'
-    __chk_gitvar_status 'CONFLICTS'  '-ne 0'
-    __chk_gitvar_status 'CHANGED'    '-ne 0'
-    __chk_gitvar_status 'UNTRACKED'  '-ne 0'
-    __chk_gitvar_status 'STASHED'    '-ne 0'
-    __chk_gitvar_status 'CLEAN'      '-eq 1'   -
+    if [[ $GIT_CLEAN -eq 0 ]] || [[ $GIT_PROMPT_CLEAN != "" ]]; then
+      __add_status        "$GIT_PROMPT_SEPARATOR"
+      __chk_gitvar_status 'STAGED'     '-ne 0'
+      __chk_gitvar_status 'CONFLICTS'  '-ne 0'
+      __chk_gitvar_status 'CHANGED'    '-ne 0'
+      __chk_gitvar_status 'UNTRACKED'  '-ne 0'
+      __chk_gitvar_status 'STASHED'    '-ne 0'
+      __chk_gitvar_status 'CLEAN'      '-eq 1'   -
+    fi
     __add_status        "$ResetColor$GIT_PROMPT_SUFFIX"
 
-    NEW_PROMPT="$(gp_add_virtualenv_to_prompt)$PROMPT_START$($prompt_callback)$STATUS$PROMPT_END"
+    NEW_PROMPT="$(gp_add_virtualenv_to_prompt)$PROMPT_START$($prompt_callback)$STATUS_PREFIX$STATUS$PROMPT_END"
   else
     NEW_PROMPT="$EMPTY_PROMPT"
   fi
 
-  PS1="${NEW_PROMPT//_LAST_COMMAND_INDICATOR_/${LAST_COMMAND_INDICATOR}}"
+  PS1="${NEW_PROMPT//_LAST_COMMAND_INDICATOR_/${LAST_COMMAND_INDICATOR}${ResetColor}}"
+  command rm "$GIT_INDEX_PRIVATE" 2>/dev/null
 }
 
 # Helper function that returns virtual env information to be set in prompt
@@ -528,21 +592,33 @@ function gp_add_virtualenv_to_prompt {
 function is_function {
   declare -Ff "$1" >/dev/null;
 }
-#Helper function that truncates $PWD depending on window width
+
+# Helper function that truncates $PWD depending on window width
+# Optionally specify maximum length as parameter (defaults to 1/3 of terminal)
 function gp_truncate_pwd {
   local tilde="~"
   local newPWD="${PWD/#${HOME}/${tilde}}"
-  local pwdmaxlen=$((${COLUMNS:-80}/3))
+  local pwdmaxlen=${1:-$((${COLUMNS:-80}/3))}
   [ ${#newPWD} -gt $pwdmaxlen ] && newPWD="...${newPWD:3-$pwdmaxlen}"
   echo -n "$newPWD"
 }
 
-#Sets the window title to the given argument string
+# Sets the window title to the given argument string
 function gp_set_window_title {
-  echo -ne "\[\033]0;"$*"\007\]"
+  echo -ne "\[\033]0;"$@"\007\]"
 }
 
 function prompt_callback_default {
+  return
+}
+
+# toggle gitprompt
+function git_prompt_toggle() {
+  if [[ "$GIT_PROMPT_DISABLE" = 1 ]]; then
+    GIT_PROMPT_DISABLE=0
+  else
+    GIT_PROMPT_DISABLE=1
+  fi
   return
 }
 

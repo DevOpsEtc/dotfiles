@@ -1,9 +1,9 @@
 
 #######################################################
 ##  filename: functions.sh                           ##
-##  path:     ~/src/config/dotfiles/bash/            ##
+##  path:     ~/projects/config/dotfiles/bash/       ##
 ##  purpose:  bash shell functions                   ##
-##  date:     05/23/2017                             ##
+##  date:     03/08/2018                             ##
 ##  note:     sourced via bash_profile               ##
 ##  repo:     https://github.com/DevOpsEtc/dotfiles  ##
 ##  source:   sourced by bash_profile                ##
@@ -134,9 +134,9 @@ cheat() {
     echo -e "$yellow\n \bexample: $ ch atom line 4 $rs"
   # do if number of trailing lines is blank; avoids invalid arg error
   elif [ -z "$3" ]; then
-    grep -i "$2" -A0 ~/src/cheats/$1.txt | less -r
+    grep -i "$2" -A0 ~/projects/cheats/$1.txt | less -r
   else
-    grep -i "$2" -A$3 ~/src/cheats/$1.txt
+    grep -i "$2" -A$3 ~/projects/cheats/$1.txt
   fi
 }
 usb_clean() {
@@ -155,7 +155,7 @@ usb_clean() {
 scratch() {
   # purpose: store temporary notes in flat file; bash does not do env array
   # path to scratch file
-  scratch=$HOME/src/.scratch
+  scratch=$HOME/projects/.scratch
   # create scratch file if not already exists
   [ -f $scratch ] || touch $scratch
   scratch_count() {
@@ -266,15 +266,21 @@ site() {
   fi
 }
 tags() {
-  # purpose: # generate ctags file filled with symbols from all ~/src/* projects
+  # purpose: # generate ctags file filled with symbols from all ~/projects/* projects
   case $1 in
-    e|ed) atom $src/.tags;;  # edit
-    l|ls) cat $src/.tags;;   # list
-    r|rm) rm -f $src/.tags;; # remove
+    e|ed) atom $projects/.tags;;  # edit
+    l|ls) cat $projects/.tags;;   # list
+    r|rm) rm -f $projects/.tags;; # remove
        *)
        init_pwd="$(pwd)"     # store pwd
-       cd $src || return
+       cd $projects || return
        ctags -R --exclude=.git --exclude=_private -f .tags # generate
        cd $init_pwd || return;;        # goto initial pwd
   esac
+}
+
+web_logs() {
+  logs=$HOME/projects/blog/logs
+  aws s3 sync s3://devopsetc.com-log $logs/..
+  [[ "$1" == "-t" ]] && gunzip -c $logs/*.gz | goaccess || gunzip -c $logs/*.gz | goaccess -a -o $logs/report.html; open $logs/report.html
 }

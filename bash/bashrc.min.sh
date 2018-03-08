@@ -1,5 +1,5 @@
 #######################################################################
-##  filename: bashrc.sh                                              ##
+##  filename: bashrc.min.sh                                          ##
 ##  path:     ~/src/config/dotfiles/bash/                            ##
 ##  purpose:  bash shell minimal sane config                         ##
 ##  date:     06/10/2017                                             ##

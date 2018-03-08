@@ -119,13 +119,11 @@
     telemetryConsent: "no"
   editor:
     fontFamily: "Roboto Mono"
-    fontSize: 17
     invisibles: {}
     scrollPastEnd: true
   "export-html":
-    fontSize: 11
     lineNumber:
-      use: false
+      styles: "opacity: 0.40;"
     openIn: "browser"
     style: "grayscale.css"
   "find-and-replace": {}
